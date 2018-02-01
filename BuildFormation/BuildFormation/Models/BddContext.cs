@@ -10,6 +10,10 @@ namespace BuildFormation.Models
     {
         public DbSet<Ecole> Ecoles { get; set; }
         public DbSet<Faculte> Facultes { get; set; }
+        public DbSet<Filiere> Filieres { get; set; }
+
+        public DbSet<Option> Options { get; set; }
+        public DbSet<Specialite> Specialites { get; set; }
 
     }
 }

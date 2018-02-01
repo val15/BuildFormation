@@ -160,7 +160,10 @@
     <Compile Include="Models\Dal.cs" />
     <Compile Include="Models\Ecole.cs" />
     <Compile Include="Models\Faculte.cs" />
+    <Compile Include="Models\Filiere.cs" />
     <Compile Include="Models\IDal.cs" />
+    <Compile Include="Models\Option.cs" />
+    <Compile Include="Models\Specialite .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

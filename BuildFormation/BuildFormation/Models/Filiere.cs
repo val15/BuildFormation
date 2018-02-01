@@ -6,14 +6,13 @@ using System.Web;
 
 namespace BuildFormation.Models
 {
-    public class Faculte
+    public class Filiere
     {
         public int Id { get; set; }
         [Required]
         public string Nom { get; set; }
-        [Required]
-        public virtual Ecole Ecole { get; set; }
 
-        //prof responsable
+        
+        public virtual Faculte Faculte { get; set; }
     }
 }
