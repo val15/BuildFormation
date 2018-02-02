@@ -12,7 +12,9 @@ namespace BuildFormation.Models
         [Required]
         public string Nom { get; set; }
 
-        public virtual Option Option { get; set; }
+        public Option Option { get; set; }
+
+        public virtual List<Membre> Membres { get; set; }
 
     }
 }

@@ -127,9 +127,10 @@ namespace BuildFormation.Tests
         {
             _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
             var ecole = _dal.ObtenirEcole("IFT");
-            _dal.CreerFaculte("Science", ecole);
-
-            var faculte = _dal.ObtenirFaculte("Science");
+            Assert.IsNotNull(ecole);
+            var faculte =_dal.CreerFaculte("Science", ecole);
+            Assert.IsNotNull(faculte);
+            
             _dal.CreerFiliere("F1",faculte);
             _dal.CreerFiliere("F2", faculte);
 
@@ -199,7 +200,7 @@ namespace BuildFormation.Tests
             _dal.CreerOption("O1", filiere);
             _dal.CreerOption("O2", filiere);
 
-            var optionsDuFiliere = _dal.ObtenirListeOptionesDUnFaculte(filiere);
+            var optionsDuFiliere = _dal.ObtenirListeOptionesDUnFiliere(filiere);
             Assert.IsNotNull(optionsDuFiliere);
 
             Assert.AreEqual(2, optionsDuFiliere.Count);
@@ -332,6 +333,120 @@ namespace BuildFormation.Tests
             second = _dal.ObtenirSpecialite(2);
             Assert.IsNull(second);
         }
+
+        #endregion
+
+        #region Membre 
+
+        [TestMethod]
+        public void
+            CreerDeuxMembre_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_ObtientLeMembreLaListeDesmembre()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+            Assert.IsNotNull(ecole);
+            var faculte= _dal.CreerFaculte("Science", ecole);
+            Assert.IsNotNull(faculte);
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+            Assert.IsNotNull(filiere);
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+            Assert.IsNotNull(option);
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            Assert.IsNotNull(specialite);
+            var membre = _dal.CreerMembre("Randre", "Zo","Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var membre2 = _dal.CreerMembre("Randre2", "Zo2", "Zo002", "II2300Tazo2", "test@ts2.com", Privilege.Professeur, "hreyrey2",
+                specialite);
+
+         
+            Assert.IsNotNull(membre);
+            Assert.AreEqual("Randre", membre.Nom);
+            Assert.AreEqual("Zo", membre.Prenom);
+            Assert.AreEqual("Zo00", membre.Pseudo);
+            Assert.AreEqual("II2300Tazo", membre.Adresse);
+            Assert.AreEqual("test@ts.com", membre.Email);
+            Assert.AreEqual(Privilege.Etudiant, membre.Privilege);
+            Assert.AreEqual(_dal.EncodeMd5("hreyrey"), membre.MotDePasse);
+
+            var lstmembres = _dal.ObtenirListeMembres();
+
+            Assert.IsNotNull(lstmembres);
+            Assert.AreEqual(2, lstmembres.Count);
+            Assert.AreEqual("Randre2", lstmembres[1].Nom);
+            Assert.AreEqual("Zo2", lstmembres[1].Prenom);
+            Assert.AreEqual("Zo002", lstmembres[1].Pseudo);
+            Assert.AreEqual("II2300Tazo2", lstmembres[1].Adresse);
+            Assert.AreEqual("test@ts2.com", lstmembres[1].Email);
+            Assert.AreEqual(Privilege.Professeur, lstmembres[1].Privilege);
+            Assert.AreEqual(_dal.EncodeMd5("hreyrey2"), lstmembres[1].MotDePasse);
+
+        }
+
+        [TestMethod]
+        public void
+            ModofocationEtSuppressionMembre_AvecDeuxMembre_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var membre2 = _dal.CreerMembre("HH", "Zrrt", "grer", "455", "GgGGGEER@ts.com", Privilege.Professeur, "trvg",
+                specialite);
+
+
+             _dal.SupprimerMembre(membre1.Id);
+            _dal.ModifierMembre(membre2.Id, "Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Administrateur,
+               "hreyrey",
+                specialite);
+            membre1 = _dal.ObtenirMembre(membre1.Id);
+            Assert.IsNull(membre1);
+            membre2 = _dal.ObtenirMembre(membre2.Id);
+            Assert.IsNotNull(membre2);
+            Assert.AreEqual("Randre", membre2.Nom);
+            Assert.AreEqual("Zo", membre2.Prenom);
+            Assert.AreEqual("Zo00", membre2.Pseudo);
+            Assert.AreEqual("II2300Tazo", membre2.Adresse);
+            Assert.AreEqual("test@ts.com", membre2.Email);
+            Assert.AreEqual(Privilege.Administrateur, membre2.Privilege);
+            Assert.AreEqual(_dal.EncodeMd5("hreyrey"), membre2.MotDePasse);
+        }
+
+        [TestMethod]
+        public void
+            AttribuerDesMembreAUnSpecialite_CreerUnEcole_CreerUnFaculterAvecLEcole_CreerUnFilierePourLaFaculte_CreerUnOptionPourLaFiliere_CreerUnSpecialiesPourLOption_CreerDeuxmembrePourLESpecialite_RenvoiBienLesMembreDuSpecialite_Option()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var membre2 = _dal.CreerMembre("HH", "Zo2", "grer", "455", "GgGGGEER@ts.com", Privilege.Professeur, "trvg",
+                specialite);
+
+
+            var lstMembres = _dal.ObtenirListeMembreDuSpecialite(specialite);
+            Assert.IsNotNull(lstMembres);
+            Assert.AreEqual(2, lstMembres.Count);
+            Assert.AreEqual("Randre", lstMembres[0].Nom);
+            Assert.AreEqual("Zo2", lstMembres[1].Prenom);
+          
+        }
+
+
 
         #endregion
 

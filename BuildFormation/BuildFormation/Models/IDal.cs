@@ -8,19 +8,18 @@ namespace BuildFormation.Models
     public interface IDal : IDisposable
     {
         #region Ecole
-        void CreerEcole(string nom, string adresse, string telephone, string email);
+        Ecole CreerEcole(string nom, string adresse, string telephone, string email);
         bool ModifierEcole(int id,string nom, string adresse, string telephone, string email);
         bool SupprimerEcole(int id);
         Ecole ObtenirEcole(int id);
         Ecole ObtenirEcole(string nom);
         List<Ecole> ObtenirListeEcoles();
-       List<Faculte> ObtenirListeFacultesDUnEcole(int idEcole);
-        List<Faculte> ObtenirListeFacultesDUnEcole(Ecole ecole);
+         List<Faculte> ObtenirListeFacultesDUnEcole(Ecole ecole);
         #endregion
 
         #region Faculte
 
-        void CreerFaculte(string nom,Ecole ecole);
+        Faculte CreerFaculte(string nom,Ecole ecole);
         bool ModifierFaculte(int id, string nom);
         bool SupprimerFaculte(int id);
         Faculte ObtenirFaculte(int id);
@@ -31,7 +30,7 @@ namespace BuildFormation.Models
 
         #region Filiere
 
-        void CreerFiliere(string nom, Faculte faculte);
+        Filiere CreerFiliere(string nom, Faculte faculte);
         bool ModifierFiliere(int id, string nom);
         bool SupprimerFiliere(int id);
         Filiere ObtenirFiliere(int id);
@@ -39,7 +38,7 @@ namespace BuildFormation.Models
         
         List<Filiere> ObtenirListeFilieres();
 
-        List<Option> ObtenirListeOptionesDUnFaculte(Filiere filiere);
+        List<Option> ObtenirListeOptionesDUnFiliere(Filiere filiere);
 
 
         #endregion
@@ -47,7 +46,7 @@ namespace BuildFormation.Models
 
         #region Option
 
-        void CreerOption(string nom, Filiere filiere);
+        Option CreerOption(string nom, Filiere filiere);
         bool ModifierOption(int id, string nom);
         bool SupprimerOption(int id);
         Option ObtenirOption(int id);
@@ -62,13 +61,28 @@ namespace BuildFormation.Models
 
         #region Specialite
 
-        void CreerSpecialite(string nom, Option option);
+        Specialite CreerSpecialite(string nom, Option option);
         bool ModifierSpecialite(int id, string nom);
         bool SupprimerSpecialite(int id);
         Specialite ObtenirSpecialite(int id);
         Specialite ObtenirSpecialite(string nom);
 
         List<Specialite> ObtenirListeSpecialites();
+        List<Membre> ObtenirListeMembreDuSpecialite(Specialite specialite);
+
+        #endregion
+
+        #region Membre
+
+        Membre CreerMembre(string nom, string prenom,string pseudo, string adresse, string email, Privilege privilege,string motDePasse, Specialite specialite);
+
+        bool ModifierMembre(int id, string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege, string motDePasse, Specialite specialite);
+         Membre ObtenirMembre(int id);
+        List<Membre> ObtenirListeMembres();
+
+        Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse);
+        bool SupprimerMembre(int id);
+        string EncodeMd5(string motDePasse);
 
         #endregion
 

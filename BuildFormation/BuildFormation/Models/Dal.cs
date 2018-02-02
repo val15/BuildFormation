@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Services.Description;
 
@@ -16,17 +18,19 @@ namespace BuildFormation.Models
         }
 
         #region Ecole
-        public void CreerEcole(string nom, string adresse, string telephone, string email)
+        public Ecole CreerEcole(string nom, string adresse, string telephone, string email)
         {
             _bdd.Ecoles.Add(new Ecole {Nom = nom, Adresse = adresse, Telephone = telephone, Email = email});
             try
             {
                 _bdd.SaveChanges();
+                return _bdd.Ecoles.ToList().Last();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                
+                return null;
+
             }
         }
 
@@ -99,14 +103,12 @@ namespace BuildFormation.Models
             return _bdd.Ecoles.ToList();
         }
 
-        public List<Faculte> ObtenirListeFacultesDUnEcole(int idEcole)
-        {
-            return _bdd.Facultes.Where(f => f.Ecole.Id == idEcole).ToList();
-        }
+      
 
         public List<Faculte> ObtenirListeFacultesDUnEcole(Ecole ecole)
         {
-            return _bdd.Facultes.Where(f => f.Ecole.Id == ecole.Id).ToList();
+           
+            return ecole.Facultes.ToList();
         }
 
 
@@ -118,16 +120,25 @@ namespace BuildFormation.Models
 
         #region Faculte
 
-        public void CreerFaculte(string nom,Ecole ecole)
+        public Faculte CreerFaculte(string nom,Ecole ecole)
         {
-            _bdd.Facultes.Add(new Faculte{ Nom = nom , Ecole = ecole});
             try
             {
+                _bdd.Facultes.Add(new Faculte{ Nom = nom , Ecole = ecole});
                 _bdd.SaveChanges();
+                //var lecole = ObtenirEcole(ecole.Id);
+                //lecole?.Facultes.Add(_bdd.Facultes.ToList().Last());
+
+            
+                
+                // _bdd.SaveChanges();
+                return _bdd.Facultes.ToList().Last();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                return null;
 
             }
         }
@@ -192,7 +203,9 @@ namespace BuildFormation.Models
 
         public List<Filiere> ObtenirListeFileresDUnFaculte(Faculte faculte)
         {
-                return _bdd.Filieres.Where(f => f.Faculte.Id == faculte.Id).ToList();
+                //return _bdd.Filieres.Where(f => f.Faculte.Id == faculte.Id).ToList();
+
+            return faculte.Filieres.ToList();
         }
 
         #endregion
@@ -200,16 +213,23 @@ namespace BuildFormation.Models
 
         #region Filiere
 
-        public void CreerFiliere(string nom, Faculte faculte)
+        public Filiere CreerFiliere(string nom, Faculte faculte)
         {
-            _bdd.Filieres.Add(new Filiere { Nom = nom, Faculte = faculte });
-            try
+           try
             {
+                _bdd.Filieres.Add(new Filiere { Nom = nom, Faculte = faculte });
                 _bdd.SaveChanges();
+                //var laFaculte = ObtenirFaculte(faculte.Id);
+                //laFaculte?.Filieres.Add(_bdd.Filieres.ToList().Last());
+
+                //_bdd.SaveChanges();
+
+                return _bdd.Filieres.ToList().Last();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                return null;
 
             }
         }
@@ -272,9 +292,9 @@ namespace BuildFormation.Models
             return _bdd.Filieres.ToList();
         }
 
-        public List<Option> ObtenirListeOptionesDUnFaculte(Filiere filiere)
+        public List<Option> ObtenirListeOptionesDUnFiliere(Filiere filiere)
         {
-            return _bdd.Options.Where(o => o.Filere.Id == filiere.Id).ToList();
+             return filiere.Options;
         }
 
 
@@ -283,17 +303,21 @@ namespace BuildFormation.Models
 
         #region Option
 
-        public void CreerOption(string nom, Filiere filiere)
+        public Option CreerOption(string nom, Filiere filiere)
         {
-            _bdd.Options.Add(new Option { Nom = nom, Filere = filiere });
+             
             try
             {
+                _bdd.Options.Add(new Option { Nom = nom, Filere = filiere });
                 _bdd.SaveChanges();
+                //filiere.Options.Add(_bdd.Options.ToList().Last());
+                //_bdd.SaveChanges();
+                return _bdd.Options.ToList().Last();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-
+                return null;
             }
         }
 
@@ -357,24 +381,29 @@ namespace BuildFormation.Models
 
         public List<Specialite> ObtenirListeSpecialitesDeLOption(Option option)
         {
-            return _bdd.Specialites.Where(s => s.Option.Id == option.Id).ToList();
-
+           // return _bdd.Specialites.Where(s => s.Option.Id == option.Id).ToList();
+            return option.Specialites;
         }
 
         #endregion
 
         #region Specialite
 
-        public void CreerSpecialite(string nom, Option option)
+        public Specialite CreerSpecialite(string nom, Option option)
         {
             _bdd.Specialites.Add(new Specialite { Nom = nom,  Option = option });
+            
             try
             {
                 _bdd.SaveChanges();
+                //option.Specialites.Add(_bdd.Specialites.ToList().Last());
+                //_bdd.SaveChanges();
+                return _bdd.Specialites.ToList().Last();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                return null;
 
             }
         }
@@ -437,8 +466,125 @@ namespace BuildFormation.Models
             return _bdd.Specialites.ToList();
         }
 
+        public List<Membre> ObtenirListeMembreDuSpecialite(Specialite specialite)
+        {
+            return specialite.Membres;
+        }
+
         #endregion
 
+        #region Membre
+
+        public Membre CreerMembre(string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege,
+            string motDePasse, Specialite specialite)
+        {
+            var mdpHacher = EncodeMd5(motDePasse);
+
+            _bdd.Membres.Add(new Membre
+            {
+                Nom = nom,
+                Prenom = prenom,
+                Pseudo = pseudo,
+                Adresse = adresse,
+                Email = email,
+                Privilege = privilege,
+                MotDePasse = mdpHacher,
+                Specialite = specialite
+            });
+            try
+            {
+                _bdd.SaveChanges();
+                return _bdd.Membres.ToList().Last();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+
+            }
+        }
+
+        public bool ModifierMembre(int id, string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege,
+            string motDePasse, Specialite specialite)
+        {
+            var membre = ObtenirMembre(id);
+            if (membre == null)
+                return false;
+            else
+            {
+                membre.Nom = nom;
+                membre.Prenom = prenom;
+                membre.Pseudo = pseudo;
+                membre.Adresse = adresse;
+                membre.Email = email;
+                membre.Privilege = privilege;
+                membre.Specialite = specialite;
+                membre.MotDePasse = EncodeMd5(motDePasse);
+            }
+
+            try
+            {
+                _bdd.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool SupprimerMembre(int id)
+        {
+            var membre = ObtenirMembre(id);
+            if (membre == null)
+                return false;
+            else
+            {
+                  try
+                {
+                    _bdd.Membres.Remove(membre);
+                    _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+                
+            }
+        }
+
+        public Membre ObtenirMembre(int id)
+        {
+            return _bdd.Membres.FirstOrDefault(m => m.Id == id);
+        }
+
+        public List<Membre> ObtenirListeMembres()
+        {
+            return _bdd.Membres.ToList();
+        }
+
+        public Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse)
+        {
+            string mdpHacher = EncodeMd5(motDePasse);
+            return _bdd.Membres.FirstOrDefault(m =>
+                (m.Pseudo == pseudoOuAdresseEmail || m.Email == pseudoOuAdresseEmail) &&
+                m.MotDePasse == mdpHacher);
+
+        }
+
+
+
+
+        public string EncodeMd5(string motDePasse)
+        {
+            string motDePasseSel = "BuildFormation" + motDePasse + "ASP.NET MVC";
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
+        }
+
+        #endregion
 
 
         public void Dispose()

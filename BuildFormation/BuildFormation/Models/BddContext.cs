@@ -14,6 +14,7 @@ namespace BuildFormation.Models
 
         public DbSet<Option> Options { get; set; }
         public DbSet<Specialite> Specialites { get; set; }
+        public DbSet<Membre> Membres { get; set; }
 
     }
 }

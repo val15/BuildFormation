@@ -11,8 +11,11 @@ namespace BuildFormation.Models
         public int Id { get; set; }
         [Required]
         public string Nom { get; set; }
-        [Required]
-        public virtual Ecole Ecole { get; set; }
+
+        public  Ecole Ecole { get; set; }
+
+
+        public virtual List<Filiere> Filieres { get; set; }
 
         //prof responsable
     }
