@@ -383,7 +383,7 @@ namespace BuildFormation.Tests
 
         [TestMethod]
         public void
-            ModofocationEtSuppressionMembre_AvecDeuxMembre_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
+            ModofocationEtSuppressionMembre_AvecDeuxMembres_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
         {
             var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
 
@@ -450,8 +450,79 @@ namespace BuildFormation.Tests
 
         #endregion
 
+        #region topic
+
+        [TestMethod]
+        public void
+            CreerDeuxTopics_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_ObtientLeTopicEtLalisteDesTopics()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var datemantenant = DateTime.Now;
+            var topic1 = _dal.CreerTopicTopic("titre teste", "0123456789", membre1,"theme teste", datemantenant);
+            var topic2 = _dal.CreerTopicTopic("titre teste2", "01234567892", membre1, "theme teste2", datemantenant);
+            var lstTopics = _dal.ObtenirListeTopics();
+
+            Assert.IsNotNull(topic1);
+
+            Assert.IsNotNull(lstTopics);
+            Assert.AreEqual(2, lstTopics.Count);
+            Assert.AreEqual("titre teste", lstTopics[0].Titre);
+            Assert.AreEqual("titre teste2", lstTopics[1].Titre);
+            Assert.AreEqual("0123456789", lstTopics[0].Contenu);
+            Assert.AreEqual("01234567892", lstTopics[1].Contenu);
+            Assert.AreEqual("Randre", lstTopics[0].Auteur.Nom);
+            Assert.AreEqual("Randre", lstTopics[1].Auteur.Nom);
+            Assert.AreEqual("theme teste", lstTopics[0].Theme);
+            Assert.AreEqual("theme teste2", lstTopics[1].Theme);
+
+        }
+         
+        [TestMethod]
+        public void
+            ModificationEtSuppressionTopic_AvecDeuxTopics_SupprimerLePremier_ModifierLeSecond_ObtientLeTopicSupplimEEgaleNullEtObtenirMembreModitie()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+
+            var datemantenant = DateTime.Now;
+            var topic1 = _dal.CreerTopicTopic("titre teste", "0123456789", membre1, "theme teste", datemantenant);
+            var topic2 = _dal.CreerTopicTopic("titre teste2", "01234567892", membre1, "theme teste2", datemantenant);
 
 
+            
+            _dal.SupprimerTopic(topic1.Id);
+            _dal.ModifierTopic(topic2.Id, "titre teste", "0123456789", "theme teste");
 
+            topic1 = _dal.ObtenirTopic(topic1.Id);
+            Assert.IsNull(topic1);
+            topic2 = _dal.ObtenirTopic(topic2.Id);
+            Assert.IsNotNull(topic2);
+            Assert.AreEqual("titre teste", topic2.Titre);
+             Assert.AreEqual("0123456789", topic2.Contenu);
+            Assert.AreEqual("Randre", topic2.Auteur.Nom);
+            Assert.AreEqual("theme teste", topic2.Theme);
+           
+        }
+        #endregion
     }
 }

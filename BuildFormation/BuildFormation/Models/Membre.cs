@@ -31,6 +31,8 @@ namespace BuildFormation.Models
 
 
         public  Specialite Specialite { get; set; }
+
+
     }
 
     

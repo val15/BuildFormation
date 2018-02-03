@@ -586,6 +586,97 @@ namespace BuildFormation.Models
 
         #endregion
 
+        #region Topic
+
+        public Topic CreerTopicTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication)
+        {
+            _bdd.Topics.Add(new Topic
+            {
+                Titre = titre,
+                Contenu = contenu,
+                Auteur = auteur,
+                Theme = theme,
+                DateDePublication = dateDePublication,
+            
+               
+            });
+            try
+            {
+                _bdd.SaveChanges();
+                return _bdd.Topics.ToList().Last();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public bool ModifierTopic(int id, string titre, string contenu, string theme)
+        {
+            var topic = _bdd.Topics.FirstOrDefault(t => t.Id == id);
+            if (topic == null)
+                return false;
+            else
+            {
+                try
+                {
+                    topic.Titre = titre;
+                    topic.Contenu = contenu;
+                    topic.Theme = theme;
+                    topic.DateDernierModification=DateTime.Now;
+                    _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+            }
+        }
+
+        public bool SupprimerTopic(int id)
+        {
+            var topic = _bdd.Topics.FirstOrDefault(t => t.Id == id);
+            if (topic == null)
+                return false;
+            else
+            {
+                try
+                {
+                    _bdd.Topics.Remove(topic);
+                    _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+            }
+        }
+
+        public Topic ObtenirTopic(int id)
+        {
+            return _bdd.Topics.FirstOrDefault(t => t.Id == id);
+        }
+
+        public List<Topic> ObtenirListeTopics()
+        {
+           //OU  return _bdd.Topics.OrderBy(t => t.DateDePublication).ToList();
+            return _bdd.Topics.ToList();
+
+        }
+
+       
+
+
+        #endregion
+
+
+       
+
 
         public void Dispose()
         {

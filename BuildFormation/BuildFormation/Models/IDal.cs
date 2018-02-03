@@ -86,6 +86,18 @@ namespace BuildFormation.Models
 
         #endregion
 
+        #region Topic
+
+        Topic CreerTopicTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication);
+        bool ModifierTopic(int id,string titre, string contenu, string theme);
+        Topic ObtenirTopic(int id);
+        List<Topic> ObtenirListeTopics();
+
+        bool SupprimerTopic(int id);
+
+
+        #endregion
+
 
     }
 }
