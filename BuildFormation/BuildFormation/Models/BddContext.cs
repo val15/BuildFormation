@@ -16,5 +16,7 @@ namespace BuildFormation.Models
         public DbSet<Specialite> Specialites { get; set; }
         public DbSet<Membre> Membres { get; set; }
         public DbSet<Topic> Topics { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Commentaire> Commentaires { get; set; }
     }
 }

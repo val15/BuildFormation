@@ -596,7 +596,7 @@ namespace BuildFormation.Models
                 Contenu = contenu,
                 Auteur = auteur,
                 Theme = theme,
-                DateDePublication = dateDePublication,
+                DateDePublication = dateDePublication
             
                
             });
@@ -656,6 +656,85 @@ namespace BuildFormation.Models
                 }
             }
         }
+        #endregion
+
+        #region Document
+        public Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication)
+        {
+            _bdd.Documents.Add(new Document
+            {
+                Titre = titre,
+                Chemin = chemin,
+                Auteur = auteur,
+                Theme = theme,
+                DateDePublication = dateDePublication
+            });
+            try
+            {
+                _bdd.SaveChanges();
+                return _bdd.Documents.ToList().Last();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public bool ModifierDocument(int id, string titre, string chemin, string theme)
+        {
+            var document = ObtenirDocument(id);
+            if (document == null)
+                return false;
+            else
+            {
+                try
+                {
+                    document.Titre = titre;
+                    document.Chemin = chemin;
+                    document.Theme = theme;
+                   _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+            }
+        }
+
+        public Document ObtenirDocument(int id)
+        {
+            return _bdd.Documents.FirstOrDefault(d => d.Id==id);
+        }
+
+        public List<Document> ObtenirListeDocuments()
+        {
+            return _bdd.Documents.ToList();
+        }
+
+        public bool SupprimerDocument(int id)
+        {
+            var document = ObtenirDocument(id);
+            if (document == null)
+                return false;
+            else
+            {
+                try
+                {
+                    _bdd.Documents.Remove(document);
+                    _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+            }
+        }
+
 
         public Topic ObtenirTopic(int id)
         {
@@ -664,18 +743,93 @@ namespace BuildFormation.Models
 
         public List<Topic> ObtenirListeTopics()
         {
-           //OU  return _bdd.Topics.OrderBy(t => t.DateDePublication).ToList();
+            //OU  return _bdd.Topics.OrderBy(t => t.DateDePublication).ToList();
             return _bdd.Topics.ToList();
 
         }
 
-       
+        #endregion
 
+        #region Commentaire
+
+        public Commentaire CreerCommentaire(Publication publication, Membre auteur, string contenu, DateTime dateDePublication)
+        {
+            _bdd.Commentaires.Add(new Commentaire
+            {
+                Publication = publication,
+                Auteur = auteur,
+                Contenu = contenu,
+                DateDePublication = dateDePublication
+            });
+            try
+            {
+                _bdd.SaveChanges();
+                return _bdd.Commentaires.ToList().Last();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public bool ModifierCommentaire(int id, string contenu)
+        {
+            var commentaire = ObtenirCommentaire(id);
+            if (commentaire == null)
+                return false;
+            else
+            {
+                try
+                {
+                    
+                     commentaire.Contenu = contenu;
+                    _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+
+            }
+        }
+
+        public Commentaire ObtenirCommentaire(int id)
+        {
+            return _bdd.Commentaires.FirstOrDefault(c => c.Id == id);
+
+        }
+
+        public List<Commentaire> ObtenirListeCommentaires()
+        {
+            return _bdd.Commentaires.ToList();
+        }
+
+        public bool SupprimerCommentaire(int id)
+        {
+            var commentaire = ObtenirCommentaire(id);
+            if (commentaire == null)
+                return false;
+            else
+            {
+                try
+                {
+                    _bdd.Commentaires.Remove(commentaire);
+                    _bdd.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+            }
+        }
 
         #endregion
 
-
-       
 
 
         public void Dispose()

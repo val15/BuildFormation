@@ -6,22 +6,22 @@ using System.Web;
 
 namespace BuildFormation.Models
 {
-    public class Topic
+    public class Topic :Publication
     {
-        public int Id { get; set; }
-        [Required]
-        public string Titre { get; set; }
+        
+        //[Required]
+        //public string Titre { get; set; }
         [Required]
         public string Contenu { get; set; }
         
-        [Required]
-        public Membre Auteur { get; set; }
+        //[Required]
+        //public Membre Auteur { get; set; }
 
-        [Required]
-        public string Theme { get; set; }
+        //[Required]
+        //public string Theme { get; set; }
 
-        [Required]
-        public DateTime DateDePublication { get; set; }
+        //[Required]
+        //public DateTime DateDePublication { get; set; }
 
         public DateTime? DateDernierModification { get; set; }
 

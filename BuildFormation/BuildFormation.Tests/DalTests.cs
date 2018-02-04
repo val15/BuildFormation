@@ -128,13 +128,13 @@ namespace BuildFormation.Tests
             _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
             var ecole = _dal.ObtenirEcole("IFT");
             Assert.IsNotNull(ecole);
-            var faculte =_dal.CreerFaculte("Science", ecole);
+            var faculte = _dal.CreerFaculte("Science", ecole);
             Assert.IsNotNull(faculte);
-            
-            _dal.CreerFiliere("F1",faculte);
+
+            _dal.CreerFiliere("F1", faculte);
             _dal.CreerFiliere("F2", faculte);
 
-            var filieresDuFaculte= _dal.ObtenirListeFileresDUnFaculte(faculte);
+            var filieresDuFaculte = _dal.ObtenirListeFileresDUnFaculte(faculte);
             Assert.IsNotNull(filieresDuFaculte);
 
             Assert.AreEqual(2, filieresDuFaculte.Count);
@@ -155,8 +155,8 @@ namespace BuildFormation.Tests
 
             _dal.CreerFaculte("Science", ecole);
             var faculte = _dal.ObtenirFaculte("Sience");
-            _dal.CreerFiliere("Mathematique",faculte);
-           
+            _dal.CreerFiliere("Mathematique", faculte);
+
 
             var filieres = _dal.ObtenirListeFilieres();
             Assert.IsNotNull(filieres);
@@ -171,7 +171,7 @@ namespace BuildFormation.Tests
             var ecole = _dal.ObtenirEcole("IFT");
             _dal.CreerFaculte("Scien", ecole);
             var faculte = _dal.ObtenirFaculte(1);
-            _dal.CreerFiliere("F1",faculte);
+            _dal.CreerFiliere("F1", faculte);
             _dal.CreerFiliere("F2", faculte);
             var filieres = _dal.ObtenirListeFilieres();
             var premier = _dal.ObtenirFiliere(filieres[0].Id);
@@ -224,7 +224,7 @@ namespace BuildFormation.Tests
             _dal.CreerFiliere("Mathematique", faculte);
             var filiere = _dal.ObtenirFiliere("Mathematique");
 
-            _dal.CreerOption("Mecanique",filiere);
+            _dal.CreerOption("Mecanique", filiere);
             var options = _dal.ObtenirListeOptions();
             Assert.IsNotNull(options);
             Assert.AreEqual(1, options.Count);
@@ -298,7 +298,7 @@ namespace BuildFormation.Tests
             var filiere = _dal.ObtenirFiliere("Mathematique");
             _dal.CreerOption("Mecanique", filiere);
             var option = _dal.ObtenirOption(1);
-            _dal.CreerSpecialite("Quantique",option);
+            _dal.CreerSpecialite("Quantique", option);
 
             var spacialites = _dal.ObtenirListeSpecialites();
             Assert.IsNotNull(spacialites);
@@ -344,7 +344,7 @@ namespace BuildFormation.Tests
         {
             var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
             Assert.IsNotNull(ecole);
-            var faculte= _dal.CreerFaculte("Science", ecole);
+            var faculte = _dal.CreerFaculte("Science", ecole);
             Assert.IsNotNull(faculte);
             var filiere = _dal.CreerFiliere("Mathematique", faculte);
             Assert.IsNotNull(filiere);
@@ -352,12 +352,12 @@ namespace BuildFormation.Tests
             Assert.IsNotNull(option);
             var specialite = _dal.CreerSpecialite("Mécanique", option);
             Assert.IsNotNull(specialite);
-            var membre = _dal.CreerMembre("Randre", "Zo","Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+            var membre = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
                 specialite);
             var membre2 = _dal.CreerMembre("Randre2", "Zo2", "Zo002", "II2300Tazo2", "test@ts2.com", Privilege.Professeur, "hreyrey2",
                 specialite);
 
-         
+
             Assert.IsNotNull(membre);
             Assert.AreEqual("Randre", membre.Nom);
             Assert.AreEqual("Zo", membre.Prenom);
@@ -401,7 +401,7 @@ namespace BuildFormation.Tests
                 specialite);
 
 
-             _dal.SupprimerMembre(membre1.Id);
+            _dal.SupprimerMembre(membre1.Id);
             _dal.ModifierMembre(membre2.Id, "Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Administrateur,
                "hreyrey",
                 specialite);
@@ -443,7 +443,7 @@ namespace BuildFormation.Tests
             Assert.AreEqual(2, lstMembres.Count);
             Assert.AreEqual("Randre", lstMembres[0].Nom);
             Assert.AreEqual("Zo2", lstMembres[1].Prenom);
-          
+
         }
 
 
@@ -468,7 +468,7 @@ namespace BuildFormation.Tests
             var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
                 specialite);
             var datemantenant = DateTime.Now;
-            var topic1 = _dal.CreerTopicTopic("titre teste", "0123456789", membre1,"theme teste", datemantenant);
+            var topic1 = _dal.CreerTopicTopic("titre teste", "0123456789", membre1, "theme teste", datemantenant);
             var topic2 = _dal.CreerTopicTopic("titre teste2", "01234567892", membre1, "theme teste2", datemantenant);
             var lstTopics = _dal.ObtenirListeTopics();
 
@@ -486,10 +486,10 @@ namespace BuildFormation.Tests
             Assert.AreEqual("theme teste2", lstTopics[1].Theme);
 
         }
-         
+
         [TestMethod]
         public void
-            ModificationEtSuppressionTopic_AvecDeuxTopics_SupprimerLePremier_ModifierLeSecond_ObtientLeTopicSupplimEEgaleNullEtObtenirMembreModitie()
+            ModificationEtSuppressionTopic_AvecDeuxTopics_SupprimerLePremier_ModifierLeSecond_ObtientLeTopicSupplimEEgaleNullEtObtenirTopicModifie()
         {
             var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
 
@@ -509,7 +509,7 @@ namespace BuildFormation.Tests
             var topic2 = _dal.CreerTopicTopic("titre teste2", "01234567892", membre1, "theme teste2", datemantenant);
 
 
-            
+
             _dal.SupprimerTopic(topic1.Id);
             _dal.ModifierTopic(topic2.Id, "titre teste", "0123456789", "theme teste");
 
@@ -518,11 +518,174 @@ namespace BuildFormation.Tests
             topic2 = _dal.ObtenirTopic(topic2.Id);
             Assert.IsNotNull(topic2);
             Assert.AreEqual("titre teste", topic2.Titre);
-             Assert.AreEqual("0123456789", topic2.Contenu);
+            Assert.AreEqual("0123456789", topic2.Contenu);
             Assert.AreEqual("Randre", topic2.Auteur.Nom);
             Assert.AreEqual("theme teste", topic2.Theme);
-           
+
         }
+        #endregion
+
+        #region document
+
+        [TestMethod]
+        public void
+            CreerDeuxDocuments_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_ObtientLeTopicEtLalisteDesdocuments()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var datemantenant = DateTime.Now;
+            var document1 = _dal.CreerDocument("titre teste", "/jj/10", membre1, "theme1", datemantenant);
+            var document2 = _dal.CreerDocument("titre teste2", "/jj/101", membre1, "theme2", datemantenant);
+            var lstDocuments = _dal.ObtenirListeDocuments();
+
+            Assert.IsNotNull(document1);
+
+            Assert.IsNotNull(lstDocuments);
+            Assert.AreEqual(2, lstDocuments.Count);
+            Assert.AreEqual("titre teste", lstDocuments[0].Titre);
+            Assert.AreEqual("titre teste2", lstDocuments[1].Titre);
+            Assert.AreEqual("/jj/10", lstDocuments[0].Chemin);
+            Assert.AreEqual("/jj/101", lstDocuments[1].Chemin);
+            Assert.AreEqual("Randre", lstDocuments[0].Auteur.Nom);
+            Assert.AreEqual("Randre", lstDocuments[1].Auteur.Nom);
+            Assert.AreEqual("theme1", lstDocuments[0].Theme);
+            Assert.AreEqual("theme2", lstDocuments[1].Theme);
+
+        }
+
+        [TestMethod]
+        public void
+            ModificationEtSuppressionDocument_AvecDeuxDocuments_SupprimerLePremier_ModifierLeSecond_ObtientLeDocumentSupplimEEgaleNullEtObtenirDocumenteModifie()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+
+            var datemantenant = DateTime.Now;
+            var document1 = _dal.CreerDocument("titre teste", "0123456789", membre1, "theme teste", datemantenant);
+            var document2 = _dal.CreerDocument("titre teste2", "01234567892", membre1, "theme teste2", datemantenant);
+
+
+
+            _dal.SupprimerDocument(document1.Id);
+            _dal.ModifierDocument(document2.Id, "titre teste", "0123456789", "theme teste");
+
+            document1 = _dal.ObtenirDocument(document1.Id);
+            Assert.IsNull(document1);
+            document2 = _dal.ObtenirDocument(document2.Id);
+            Assert.IsNotNull(document2);
+            Assert.AreEqual("titre teste", document2.Titre);
+            Assert.AreEqual("0123456789", document2.Chemin);
+            Assert.AreEqual("Randre", document2.Auteur.Nom);
+            Assert.AreEqual("theme teste", document2.Theme);
+
+        }
+        #endregion
+
+        #region Commentaire
+        [TestMethod]
+        public void
+            CreerDeuxCommentaire_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_NouvauxTopique_NouveauDocument_CreerDeuxCommentaireUnPourTopicUnPourDocument_ObtientListeDesCommentairesEtLeCommentairePourLeTopicEtLaDocument()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var datemantenant = DateTime.Now;
+            var topic1 = _dal.CreerTopicTopic("titre topic", "contenu", membre1, "theme1", datemantenant);
+            var document1 = _dal.CreerDocument("titre document", "/jj/101", membre1, "theme2", datemantenant);
+            var lstDocuments = _dal.ObtenirListeDocuments();
+
+
+            var commnetaire1 = _dal.CreerCommentaire(topic1, membre1, "test comment 1", datemantenant);
+            var commnetaire2 = _dal.CreerCommentaire(document1, membre1, "test comment 2", datemantenant);
+
+            var lstCommentaires = _dal.ObtenirListeCommentaires();
+            //Assert.IsNotNull(document1);
+
+            
+
+            Assert.IsNotNull(lstCommentaires);
+            Assert.AreEqual(2, lstCommentaires.Count);
+            Assert.AreEqual("test comment 1", lstCommentaires[0].Contenu);
+            Assert.AreEqual("test comment 2", lstCommentaires[1].Contenu);
+            Assert.AreEqual("Randre", lstCommentaires[0].Auteur.Nom);
+            Assert.AreEqual("Randre", lstCommentaires[1].Auteur.Nom);
+            Assert.AreEqual("titre topic", lstCommentaires[0].Publication.Titre);
+            Assert.AreEqual("titre document", lstCommentaires[1].Publication.Titre);
+
+
+            var lstCommentairesTopic1 = topic1.Commentaires;
+            var lstCommentairesDocument1 = document1.Commentaires;
+            Assert.IsNotNull(lstCommentairesTopic1 );
+            Assert.IsNotNull(lstCommentairesDocument1);
+            Assert.AreEqual(1, lstCommentairesTopic1.Count);
+            Assert.AreEqual(1, lstCommentairesDocument1.Count);
+            Assert.AreEqual("test comment 1", lstCommentairesTopic1[0].Contenu);
+            Assert.AreEqual("test comment 2", lstCommentairesDocument1[0].Contenu);
+        }
+
+
+        [TestMethod]
+        public void
+            ModificationEtSuppressionCommentaire_AvecDeuxCommentaire_SupprimerLePremier_ModifierLeSecond_ObtientLeCommentaireSupplimEEgaleNullEtObtenirCommentaireModitie()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var datemantenant = DateTime.Now;
+            var topic1 = _dal.CreerTopicTopic("titre topic", "contenu", membre1, "theme1", datemantenant);
+            var document1 = _dal.CreerDocument("titre document", "/jj/101", membre1, "theme2", datemantenant);
+            var lstDocuments = _dal.ObtenirListeDocuments();
+
+
+            var commnetaire1 = _dal.CreerCommentaire(topic1, membre1, "test comment 1", datemantenant);
+            var commnetaire2 = _dal.CreerCommentaire(document1, membre1, "test comment 2", datemantenant);
+
+            _dal.ModifierCommentaire(commnetaire2.Id, "modifComm");
+            _dal.SupprimerCommentaire(commnetaire1.Id);
+            commnetaire1 = _dal.ObtenirCommentaire(commnetaire1.Id);
+            commnetaire2 = _dal.ObtenirCommentaire(commnetaire2.Id);
+
+            Assert.IsNull(commnetaire1);
+            Assert.AreEqual("modifComm", commnetaire2.Contenu);
+          
+        }
+
+
         #endregion
     }
 }

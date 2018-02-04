@@ -94,7 +94,30 @@ namespace BuildFormation.Models
         List<Topic> ObtenirListeTopics();
 
         bool SupprimerTopic(int id);
+        #endregion
 
+
+        #region Document
+        Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication);
+        bool ModifierDocument(int id, string titre, string chemin, string theme);
+        Document ObtenirDocument(int id);
+        List<Document> ObtenirListeDocuments();
+
+        bool SupprimerDocument(int id);
+
+
+
+        #endregion
+
+
+        #region Commentaire
+
+        Commentaire CreerCommentaire(Publication publication, Membre auteur, string contenu, DateTime dateDePublication);
+        bool ModifierCommentaire(int id, string contenu);
+        Commentaire ObtenirCommentaire(int id);
+        List<Commentaire> ObtenirListeCommentaires();
+
+        bool SupprimerCommentaire(int id);
 
         #endregion
 

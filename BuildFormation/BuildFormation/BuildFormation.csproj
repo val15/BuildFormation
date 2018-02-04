@@ -157,7 +157,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BddContext.cs" />
+    <Compile Include="Models\Commentaire.cs" />
     <Compile Include="Models\Dal.cs" />
+    <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Ecole.cs" />
     <Compile Include="Models\Faculte.cs" />
     <Compile Include="Models\Filiere.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Models\Membre.cs" />
     <Compile Include="Models\Option.cs" />
     <Compile Include="Models\Privilege.cs" />
+    <Compile Include="Models\Publication.cs" />
     <Compile Include="Models\Specialite .cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
