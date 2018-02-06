@@ -19,6 +19,9 @@ namespace BuildFormation
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            }
+            IDatabaseInitializer<BddContext> init = new InitDB();
+            Database.SetInitializer(init);
+            init.InitializeDatabase(new BddContext());
+        }
     }
 }

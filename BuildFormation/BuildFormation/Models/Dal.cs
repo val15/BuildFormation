@@ -588,7 +588,7 @@ namespace BuildFormation.Models
 
         #region Topic
 
-        public Topic CreerTopicTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication)
+        public Topic CreerTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication,string description)
         {
             _bdd.Topics.Add(new Topic
             {
@@ -596,9 +596,10 @@ namespace BuildFormation.Models
                 Contenu = contenu,
                 Auteur = auteur,
                 Theme = theme,
-                DateDePublication = dateDePublication
-            
-               
+                DateDePublication = dateDePublication,
+                Description = description
+
+
             });
             try
             {
@@ -612,7 +613,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public bool ModifierTopic(int id, string titre, string contenu, string theme)
+        public bool ModifierTopic(int id, string titre, string contenu, string theme, string description)
         {
             var topic = _bdd.Topics.FirstOrDefault(t => t.Id == id);
             if (topic == null)
@@ -624,6 +625,7 @@ namespace BuildFormation.Models
                     topic.Titre = titre;
                     topic.Contenu = contenu;
                     topic.Theme = theme;
+                    topic.Description = description;
                     topic.DateDernierModification=DateTime.Now;
                     _bdd.SaveChanges();
                     return true;
@@ -656,10 +658,27 @@ namespace BuildFormation.Models
                 }
             }
         }
+
+        public Topic ObtenirTopic(int id)
+        {
+            return _bdd.Topics.FirstOrDefault(t => t.Id == id);
+        }
+
+        public List<Topic> ObtenirListeTopics()
+        {
+            //OU  return _bdd.Topics.OrderBy(t => t.DateDePublication).ToList();
+            return _bdd.Topics.ToList();
+
+        }
+
+        public List<Topic> ObtenirListeDerniersTopics(int limit)
+        {
+            return limit==0 ? _bdd.Topics.OrderByDescending(t => t.DateDePublication).ToList() : _bdd.Topics.OrderByDescending(t => t.DateDePublication).Take(limit).ToList();
+        }
         #endregion
 
         #region Document
-        public Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication)
+        public Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication,string description)
         {
             _bdd.Documents.Add(new Document
             {
@@ -667,7 +686,8 @@ namespace BuildFormation.Models
                 Chemin = chemin,
                 Auteur = auteur,
                 Theme = theme,
-                DateDePublication = dateDePublication
+                DateDePublication = dateDePublication,
+                Description = description
             });
             try
             {
@@ -681,7 +701,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public bool ModifierDocument(int id, string titre, string chemin, string theme)
+        public bool ModifierDocument(int id, string titre, string chemin, string theme,string description)
         {
             var document = ObtenirDocument(id);
             if (document == null)
@@ -693,6 +713,7 @@ namespace BuildFormation.Models
                     document.Titre = titre;
                     document.Chemin = chemin;
                     document.Theme = theme;
+                    document.Description = description;
                    _bdd.SaveChanges();
                     return true;
                 }
@@ -709,10 +730,15 @@ namespace BuildFormation.Models
             return _bdd.Documents.FirstOrDefault(d => d.Id==id);
         }
 
+        public List<Document> ObtenirListeDerniersDocuments(int limit)
+        {
+            return limit == 0 ? _bdd.Documents.OrderByDescending(d => d.DateDePublication).ToList() : _bdd.Documents.OrderByDescending(d => d.DateDePublication).Take(limit).ToList();
+        }
         public List<Document> ObtenirListeDocuments()
         {
             return _bdd.Documents.ToList();
         }
+
 
         public bool SupprimerDocument(int id)
         {
@@ -736,17 +762,7 @@ namespace BuildFormation.Models
         }
 
 
-        public Topic ObtenirTopic(int id)
-        {
-            return _bdd.Topics.FirstOrDefault(t => t.Id == id);
-        }
-
-        public List<Topic> ObtenirListeTopics()
-        {
-            //OU  return _bdd.Topics.OrderBy(t => t.DateDePublication).ToList();
-            return _bdd.Topics.ToList();
-
-        }
+        
 
         #endregion
 

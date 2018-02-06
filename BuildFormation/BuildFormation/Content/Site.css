@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,25 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.AcceilGauche {
+    float: left;
+    width: 40%;
+
+}
+
+.AcceilDroite {
+    float: right;
+    width: 40%;
+
+}
+
+.footer {
+    width: 50%;
+    margin: auto;
+    /*position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;*/
 }

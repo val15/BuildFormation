@@ -12,9 +12,11 @@ namespace BuildFormation.Models
         [Required]
         public string Titre { get; set; }
         [Required]
-        public Membre Auteur { get; set; }
+        public virtual Membre Auteur { get; set; }
         [Required]
         public string Theme { get; set; }
+        [Required]//restriction sur le nombre de caractaire sur le déscription
+        public string Description { get; set; }
         [Required]
         public DateTime DateDePublication { get; set; }
 

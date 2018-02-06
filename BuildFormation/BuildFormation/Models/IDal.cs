@@ -88,9 +88,10 @@ namespace BuildFormation.Models
 
         #region Topic
 
-        Topic CreerTopicTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication);
-        bool ModifierTopic(int id,string titre, string contenu, string theme);
+        Topic CreerTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication, string description);
+        bool ModifierTopic(int id,string titre, string contenu, string theme, string description);
         Topic ObtenirTopic(int id);
+        List<Topic> ObtenirListeDerniersTopics(int limit);
         List<Topic> ObtenirListeTopics();
 
         bool SupprimerTopic(int id);
@@ -98,9 +99,10 @@ namespace BuildFormation.Models
 
 
         #region Document
-        Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication);
-        bool ModifierDocument(int id, string titre, string chemin, string theme);
+        Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication, string description);
+        bool ModifierDocument(int id, string titre, string chemin, string theme, string description);
         Document ObtenirDocument(int id);
+        List<Document> ObtenirListeDerniersDocuments(int limit);
         List<Document> ObtenirListeDocuments();
 
         bool SupprimerDocument(int id);
@@ -116,6 +118,7 @@ namespace BuildFormation.Models
         bool ModifierCommentaire(int id, string contenu);
         Commentaire ObtenirCommentaire(int id);
         List<Commentaire> ObtenirListeCommentaires();
+        
 
         bool SupprimerCommentaire(int id);
 
