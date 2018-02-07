@@ -3,19 +3,24 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<div>
+    <b>@Html.ActionLink(@Model.NbMembre.ToString()+ " membres", "Index", "Membre")</b> 
+</div>
 <div class="AcceilGauche" >
     <h1>Liste des derniers @Model.Limit topics  </h1>
     @foreach (var topic in Model.ListeDerniersTopics)
     {
-        <biv>
-            <h2>@topic.Titre</h2>
-            <b> Auteur : </b> @topic.Auteur.Nom
-            <b> Le : </b> @topic.DateDePublication
-            <b> theme : </b> @topic.Theme
-            <br />
-            @topic.Description
-        </biv>
+    <biv>
+        <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", "Topic", new { id = topic.Id }, null)</h2>
+        <b> Auteur : </b> @topic.Auteur.Nom
+        <b> Le : </b> @topic.DateDePublication
+        <b> theme : </b> @topic.Theme
+        <br />
+        <b>Description :</b>
+        <br />
+        @topic.Description
+
+    </biv>
     }
 </div>
 
@@ -29,6 +34,8 @@
             <b> Auteur : </b> @document.Auteur.Nom
             <b> Le : </b> @document.DateDePublication
             <b> theme : </b> @document.Theme
+            <br />
+            <b>Description :</b>
             <br />
             @document.Description
         </biv>

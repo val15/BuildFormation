@@ -1,0 +1,22 @@
+﻿@model  List<BuildFormation.Models.Membre>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste des </h2>
+<div>
+    @foreach (var membre in Model)
+    {
+    <div>
+        <h3>@Html.ActionLink(@membre.Pseudo, "AfficherMembre", "Membre", new { id = @membre.Id }, null), @membre.Privilege </h3>
+        <br />
+
+        <b>Nobre de topic: </b> @Html.ActionLink(@membre.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @membre.Id }, null)
+
+        <br />
+        <b>Nobre de document: </b> @membre.Documents.Count
+    </div>
+    }
+</div>
+

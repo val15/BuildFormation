@@ -40,15 +40,38 @@ namespace BuildFormation.Models
             });
             context.SaveChanges();
             var membre1 = context.Membres.ToList().Last();
+            context.Membres.Add(new Membre
+            {
+                Nom = "LePony",
+                Prenom = "Fiaritso",
+                Pseudo = "LePond10",
+                Adresse = "19BisTana",
+                Email = "test0jhhre@ts.com",
+                Privilege = Privilege.Professeur,
+                MotDePasse = "rjjejrer",
+                Specialite = specialite
+
+            });
+            context.SaveChanges();
+            var membre2 = context.Membres.ToList().Last();
+
+
             context.Topics.Add(new Topic
             {
                 Titre = "topic 00",
-                Contenu = "0123456789",
                 Auteur = membre1,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est un simple teste"
-            });
+                Description = "ce totic est un simple teste",
+                Contenu = "Je m’amuse depuis peu avec Windows 10 IOT et un Raspberry Pi alors je me suis procuré un écran tactile pour améliorer mon" +
+                          " expérience. Voici mon setup actuel:"+
+                        "Raspberry Pi 3"+
+                        "Rapsberry Pi 7” touch display"+
+                        "Raspberry Pi Clear Case"+
+                        "Windows 10 IOT Insider Edition "+
+                        "Pour faire fonctionner le tout,l faut simplement connecter le câble “display” "+
+                        "(le gros gris) ainsi que les 3 petits fils sur le GPIO du Raspberry Pi!",
+                    });
 
             context.Topics.Add(new Topic
             {
@@ -76,7 +99,7 @@ namespace BuildFormation.Models
             {
                 Titre = "topic 04",
                 Contenu = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -107,7 +130,7 @@ namespace BuildFormation.Models
             {
                 Titre = "topic 07",
                 Contenu = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -117,7 +140,7 @@ namespace BuildFormation.Models
             {
                 Titre = "topic 09",
                 Contenu = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -147,7 +170,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 00",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -158,7 +181,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 01",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -169,7 +192,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 02",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -180,7 +203,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 03",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -191,7 +214,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 04",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -202,7 +225,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 05",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -213,7 +236,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 06",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -224,7 +247,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 07",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -235,7 +258,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 08",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -246,7 +269,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 09",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -257,7 +280,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 10",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"
@@ -268,7 +291,7 @@ namespace BuildFormation.Models
             {
                 Titre = "document 11",
                 Chemin = "simple test 2",
-                Auteur = membre1,
+                Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
                 Description = "ce totic est second teste"

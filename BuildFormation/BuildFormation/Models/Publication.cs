@@ -11,8 +11,8 @@ namespace BuildFormation.Models
         public int Id { get; set; }
         [Required]
         public string Titre { get; set; }
-        [Required]
-        public virtual Membre Auteur { get; set; }
+      //  [Required]
+       // public virtual Membre Auteur { get; set; }
         [Required]
         public string Theme { get; set; }
         [Required]//restriction sur le nombre de caractaire sur le déscription

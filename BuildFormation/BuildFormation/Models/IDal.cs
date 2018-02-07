@@ -77,8 +77,9 @@ namespace BuildFormation.Models
         Membre CreerMembre(string nom, string prenom,string pseudo, string adresse, string email, Privilege privilege,string motDePasse, Specialite specialite);
 
         bool ModifierMembre(int id, string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege, string motDePasse, Specialite specialite);
-         Membre ObtenirMembre(int id);
+         Membre ObtenirMembre(int? id);
         List<Membre> ObtenirListeMembres();
+        int ObtenirNombreMembre();
 
         Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse);
         bool SupprimerMembre(int id);
@@ -90,7 +91,7 @@ namespace BuildFormation.Models
 
         Topic CreerTopic(string titre, string contenu, Membre auteur, string theme, DateTime dateDePublication, string description);
         bool ModifierTopic(int id,string titre, string contenu, string theme, string description);
-        Topic ObtenirTopic(int id);
+        Topic ObtenirTopic(int? id);
         List<Topic> ObtenirListeDerniersTopics(int limit);
         List<Topic> ObtenirListeTopics();
 

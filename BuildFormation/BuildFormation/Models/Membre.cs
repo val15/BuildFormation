@@ -32,7 +32,9 @@ namespace BuildFormation.Models
 
         public  Specialite Specialite { get; set; }
 
-        public virtual List<Topic> Specialites { get; set; }
+        public virtual List<Topic> Topics { get; set; }
+
+        public virtual List<Document> Documents { get; set; }
 
 
     }

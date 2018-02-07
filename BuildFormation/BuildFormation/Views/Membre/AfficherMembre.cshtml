@@ -1,0 +1,20 @@
+﻿@model BuildFormation.Models.Membre
+@{
+    ViewBag.Title = "AfficherMembre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Pseudo</h2>
+<b> Nom : </b> @Model.Nom
+<br />
+<b> Prenom : </b> @Model.Prenom
+<br />
+<b> E-mail : </b> @Model.Email
+<br />
+<b> Status : </b> @Model.Privilege
+<br/>
+<b>Nobre de topic: </b> @Html.ActionLink(@Model.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @Model.Id }, null)
+<br />
+<b>Nobre de document: </b> @Model.Documents.Count
+
+

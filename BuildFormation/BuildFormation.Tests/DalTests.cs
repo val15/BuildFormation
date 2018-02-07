@@ -274,6 +274,10 @@ namespace BuildFormation.Tests
             _dal.CreerSpecialite("S2", option);
 
             var specialitesDlOption = _dal.ObtenirListeSpecialitesDeLOption(option);
+
+            option = _dal.ObtenirOption(1);
+            Assert.IsNotNull(option.Specialites);
+            Assert.AreEqual(2, option.Specialites.Count);
             Assert.IsNotNull(specialitesDlOption);
 
             Assert.AreEqual(2, specialitesDlOption.Count);
@@ -472,6 +476,8 @@ namespace BuildFormation.Tests
             var topic2 = _dal.CreerTopic("titre teste2", "01234567892", membre1, "theme teste2", datemantenant, "description02");
             var lstTopics = _dal.ObtenirListeTopics();
 
+            membre1 = _dal.ObtenirMembre(membre1.Id);
+            Assert.IsNotNull(membre1.Topics);
             Assert.IsNotNull(topic1);
 
             Assert.IsNotNull(lstTopics);
@@ -506,7 +512,7 @@ namespace BuildFormation.Tests
           
             var topic1 = _dal.CreerTopic("premier", "0123456789", membre1, "theme teste", DateTime.Now, "description01");
             var topic2 = _dal.CreerTopic("second", "01234567892", membre1, "theme teste2", DateTime.Now, "description02");
-            var lstTopics = _dal.ObtenirListeDerniersTopics();
+            var lstTopics = _dal.ObtenirListeDerniersTopics(0);
 
 
             Assert.IsNotNull(lstTopics);
@@ -608,7 +614,7 @@ namespace BuildFormation.Tests
 
             var topic1 = _dal.CreerDocument("premier", "0123456789", membre1, "theme teste", DateTime.Now, "description01");
             var topic2 = _dal.CreerDocument("second", "01234567892", membre1, "theme teste2", DateTime.Now, "description02");
-            var lstDocuments = _dal.ObtenirListeDerniersDocuments();
+            var lstDocuments = _dal.ObtenirListeDerniersDocuments(0);
 
 
             Assert.IsNotNull(lstDocuments);

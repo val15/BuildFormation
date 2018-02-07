@@ -24,8 +24,8 @@ namespace BuildFormation.Models
         //public DateTime DateDePublication { get; set; }
 
         public DateTime? DateDernierModification { get; set; }
-
+        public virtual Membre Auteur { get; set; }
         //public int Note { get; set; }????
-       
+
     }
 }

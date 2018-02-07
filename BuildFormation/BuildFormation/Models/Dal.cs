@@ -556,7 +556,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public Membre ObtenirMembre(int id)
+        public Membre ObtenirMembre(int? id)
         {
             return _bdd.Membres.FirstOrDefault(m => m.Id == id);
         }
@@ -564,6 +564,11 @@ namespace BuildFormation.Models
         public List<Membre> ObtenirListeMembres()
         {
             return _bdd.Membres.ToList();
+        }
+
+        public int ObtenirNombreMembre()
+        {
+            return _bdd.Membres.Count();
         }
 
         public Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse)
@@ -659,7 +664,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public Topic ObtenirTopic(int id)
+        public Topic ObtenirTopic(int? id)
         {
             return _bdd.Topics.FirstOrDefault(t => t.Id == id);
         }

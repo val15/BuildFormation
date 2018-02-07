@@ -10,5 +10,6 @@ namespace BuildFormation.Models
     {
         [Required]
         public string Chemin { get; set; }
+        public virtual Membre Auteur { get; set; }
     }
 }

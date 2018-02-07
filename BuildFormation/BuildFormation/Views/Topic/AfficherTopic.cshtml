@@ -1,0 +1,20 @@
+﻿@model BuildFormation.Models.Topic
+@{
+    ViewBag.Title = "AfficherTopic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AfficherTopic</h2>
+<h2>@Model.Titre</h2>
+<b> Auteur : </b> @Model.Auteur.Nom
+<b> Le : </b> @Model.DateDePublication
+<b> theme : </b> @Model.Theme
+<br />
+<b> description : </b>
+@Model.Description
+<br/>
+<b> Contenu : </b>
+<br />
+@Model.Contenu
+
+

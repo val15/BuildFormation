@@ -1,0 +1,22 @@
+﻿@model BuildFormation.ViewModels.TopicsDeViewModel
+@{
+    /**/
+
+    ViewBag.Title = "AfficherTopicsDe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Les Topics de @Model.Membre.Pseudo</h2>
+@foreach (var topic in Model.ListeTopicsDuMembre)
+{
+    <biv>
+        <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", new { id = topic.Id })</h2>
+
+        <b> Auteur : </b> @topic.Auteur.Nom
+        <b> Le : </b> @topic.DateDePublication
+        <b> theme : </b> @topic.Theme
+        <br />
+        @topic.Description
+    </biv>
+}
+

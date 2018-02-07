@@ -29,7 +29,8 @@ namespace BuildFormation.Controllers
                
                 ListeDerniersTopics = _dal.ObtenirListeDerniersTopics(5),
                 ListeDerniersDocuments = _dal.ObtenirListeDerniersDocuments(5),
-                Limit = 5
+                Limit = 5,
+                NbMembre = _dal.ObtenirNombreMembre()
             };
 
 
