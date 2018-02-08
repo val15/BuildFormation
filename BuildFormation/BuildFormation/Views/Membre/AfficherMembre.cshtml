@@ -12,9 +12,9 @@
 <b> E-mail : </b> @Model.Email
 <br />
 <b> Status : </b> @Model.Privilege
-<br/>
+<br />
 <b>Nobre de topic: </b> @Html.ActionLink(@Model.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @Model.Id }, null)
 <br />
-<b>Nobre de document: </b> @Model.Documents.Count
+<b>Nobre de document: </b> @Html.ActionLink(@Model.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @Model.Id }, null)  
 
 

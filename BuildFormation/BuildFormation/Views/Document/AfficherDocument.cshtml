@@ -1,0 +1,20 @@
+﻿@model BuildFormation.Models.Document
+@{
+    ViewBag.Title = "AfficherDocument";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Titre</h2>
+<b> Auteur : </b> @Model.Auteur.Nom
+<br />
+<b> Date de publication : </b> @Model.DateDePublication
+<br />
+<b> Theme : </b> @Model.Theme
+<br />
+<b> Nobre de pages : </b> @Model.NbPages
+<br />
+<b> description : </b>
+<br />
+@Model.Description
+<br />
+<b> Lien : </b> @Html.ActionLink(@Model.Nom,"Consulter", new { id = @Model.Id })

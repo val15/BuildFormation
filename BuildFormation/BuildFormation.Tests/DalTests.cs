@@ -578,8 +578,8 @@ namespace BuildFormation.Tests
             var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
                 specialite);
             var datemantenant = DateTime.Now;
-            var document1 = _dal.CreerDocument("titre teste", "/jj/10", membre1, "theme1", datemantenant, "description01");
-            var document2 = _dal.CreerDocument("titre teste2", "/jj/101", membre1, "theme2", datemantenant, "description02");
+            var document1 = _dal.CreerDocument("titre teste", "/jj/10", membre1, "theme1", datemantenant, "description01",10);
+            var document2 = _dal.CreerDocument("titre teste2", "/jj/101", membre1, "theme2", datemantenant, "description02",11);
             var lstDocuments = _dal.ObtenirListeDocuments();
 
             Assert.IsNotNull(document1);
@@ -588,12 +588,16 @@ namespace BuildFormation.Tests
             Assert.AreEqual(2, lstDocuments.Count);
             Assert.AreEqual("titre teste", lstDocuments[0].Titre);
             Assert.AreEqual("titre teste2", lstDocuments[1].Titre);
-            Assert.AreEqual("/jj/10", lstDocuments[0].Chemin);
-            Assert.AreEqual("/jj/101", lstDocuments[1].Chemin);
+            Assert.AreEqual("/jj/10", lstDocuments[0].Nom);
+            Assert.AreEqual("/jj/101", lstDocuments[1].Nom);
             Assert.AreEqual("Randre", lstDocuments[0].Auteur.Nom);
             Assert.AreEqual("Randre", lstDocuments[1].Auteur.Nom);
             Assert.AreEqual("theme1", lstDocuments[0].Theme);
             Assert.AreEqual("theme2", lstDocuments[1].Theme);
+            Assert.AreEqual("description01", lstDocuments[0].Description);
+            Assert.AreEqual("description02", lstDocuments[1].Description);
+            Assert.AreEqual(10, lstDocuments[0].NbPages);
+            Assert.AreEqual(11, lstDocuments[1].NbPages);
 
         }
 
@@ -612,8 +616,8 @@ namespace BuildFormation.Tests
             var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
                 specialite);
 
-            var topic1 = _dal.CreerDocument("premier", "0123456789", membre1, "theme teste", DateTime.Now, "description01");
-            var topic2 = _dal.CreerDocument("second", "01234567892", membre1, "theme teste2", DateTime.Now, "description02");
+            var topic1 = _dal.CreerDocument("premier", "0123456789", membre1, "theme teste", DateTime.Now, "description01",10);
+            var topic2 = _dal.CreerDocument("second", "01234567892", membre1, "theme teste2", DateTime.Now, "description02",11);
             var lstDocuments = _dal.ObtenirListeDerniersDocuments(0);
 
 
@@ -642,8 +646,8 @@ namespace BuildFormation.Tests
                 specialite);
 
             var datemantenant = DateTime.Now;
-            var document1 = _dal.CreerDocument("titre teste", "0123456789", membre1, "theme teste", datemantenant, "description01");
-            var document2 = _dal.CreerDocument("titre teste2", "01234567892", membre1, "theme teste2", datemantenant, "description02");
+            var document1 = _dal.CreerDocument("titre teste", "0123456789", membre1, "theme teste", datemantenant, "description01",10);
+            var document2 = _dal.CreerDocument("titre teste2", "01234567892", membre1, "theme teste2", datemantenant, "description02",11);
 
 
 
@@ -655,7 +659,7 @@ namespace BuildFormation.Tests
             document2 = _dal.ObtenirDocument(document2.Id);
             Assert.IsNotNull(document2);
             Assert.AreEqual("titre teste", document2.Titre);
-            Assert.AreEqual("0123456789", document2.Chemin);
+            Assert.AreEqual("0123456789", document2.Nom);
             Assert.AreEqual("Randre", document2.Auteur.Nom);
             Assert.AreEqual("theme teste", document2.Theme);
             Assert.AreEqual("descriptionModif", document2.Description);
@@ -681,7 +685,7 @@ namespace BuildFormation.Tests
                 specialite);
             var datemantenant = DateTime.Now;
             var topic1 = _dal.CreerTopic("titre topic", "contenu", membre1, "theme1", datemantenant, "description01");
-            var document1 = _dal.CreerDocument("titre document", "/jj/101", membre1, "theme2", datemantenant, "description02");
+            var document1 = _dal.CreerDocument("titre document", "/jj/101", membre1, "theme2", datemantenant, "description02",11);
             var lstDocuments = _dal.ObtenirListeDocuments();
 
 
@@ -731,7 +735,7 @@ namespace BuildFormation.Tests
                 specialite);
             var datemantenant = DateTime.Now;
             var topic1 = _dal.CreerTopic("titre topic", "contenu", membre1, "theme1", datemantenant, "description01");
-            var document1 = _dal.CreerDocument("titre document", "/jj/101", membre1, "theme2", datemantenant, "description02");
+            var document1 = _dal.CreerDocument("titre document", "/jj/101", membre1, "theme2", datemantenant, "description02",11);
             var lstDocuments = _dal.ObtenirListeDocuments();
 
 

@@ -9,7 +9,9 @@ namespace BuildFormation.Models
     public class Document : Publication
     {
         [Required]
-        public string Chemin { get; set; }
+        public string Nom { get; set; }
+        [Required]
+        public int NbPages { get; set; }
         public virtual Membre Auteur { get; set; }
     }
 }

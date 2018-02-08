@@ -21,7 +21,7 @@ namespace BuildFormation.Controllers
         }
         public ActionResult Index()
         {
-            List<Topic> listeTopics= _dal.ObtenirListeDerniersTopics(0);
+            var listeTopics= _dal.ObtenirListeDerniersTopics(0);
             return View(listeTopics);
             
         }
@@ -45,16 +45,11 @@ namespace BuildFormation.Controllers
             if (id.HasValue)
             {
                 var membre = _dal.ObtenirMembre(id);
-                var listeTopicsDumembre = membre.Topics;
-
-
-                if (listeTopicsDumembre == null)
-                    return View("Error");
-                else
+                var listeTopicsDuMembre = membre.Topics.OrderByDescending(t => t.DateDePublication).ToList();
                 {
                     var topicsDeViewModel = new TopicsDeViewModel
                     {
-                        ListeTopicsDuMembre = listeTopicsDumembre,
+                        ListeTopicsDuMembre = listeTopicsDuMembre,
                         Membre = membre
                     };
                     return View(topicsDeViewModel);

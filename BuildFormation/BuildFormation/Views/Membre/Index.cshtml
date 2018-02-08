@@ -15,7 +15,8 @@
         <b>Nobre de topic: </b> @Html.ActionLink(@membre.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @membre.Id }, null)
 
         <br />
-        <b>Nobre de document: </b> @membre.Documents.Count
+        <b>Nobre de document: </b> @Html.ActionLink(@membre.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @membre.Id }, null)
+
     </div>
     }
 </div>

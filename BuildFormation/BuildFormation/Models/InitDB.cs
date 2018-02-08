@@ -169,132 +169,144 @@ namespace BuildFormation.Models
             context.Documents.Add(new Document
             {
                 Titre = "document 00",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 01",
-                Chemin = "simple test 2",
+                Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 02",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 03",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 04",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 05",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 06",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 07",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 08",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 09",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 10",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 
             context.Documents.Add(new Document
             {
                 Titre = "document 11",
-                Chemin = "simple test 2",
+                 Nom = "DocTest.pdf",
+                NbPages = 14,
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
-                Description = "ce totic est second teste"
+                Description = "ce docoment est second teste"
             });
 
 

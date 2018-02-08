@@ -683,16 +683,17 @@ namespace BuildFormation.Models
         #endregion
 
         #region Document
-        public Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication,string description)
+        public Document CreerDocument(string titre, string nom, Membre auteur, string theme, DateTime dateDePublication,string description, int nbPages)
         {
             _bdd.Documents.Add(new Document
             {
                 Titre = titre,
-                Chemin = chemin,
+                Nom = nom,
                 Auteur = auteur,
                 Theme = theme,
                 DateDePublication = dateDePublication,
-                Description = description
+                Description = description,
+                NbPages = nbPages
             });
             try
             {
@@ -706,7 +707,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public bool ModifierDocument(int id, string titre, string chemin, string theme,string description)
+        public bool ModifierDocument(int id, string titre, string nom, string theme,string description)
         {
             var document = ObtenirDocument(id);
             if (document == null)
@@ -716,7 +717,7 @@ namespace BuildFormation.Models
                 try
                 {
                     document.Titre = titre;
-                    document.Chemin = chemin;
+                    document.Nom = nom;
                     document.Theme = theme;
                     document.Description = description;
                    _bdd.SaveChanges();
@@ -730,7 +731,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public Document ObtenirDocument(int id)
+        public Document ObtenirDocument(int? id)
         {
             return _bdd.Documents.FirstOrDefault(d => d.Id==id);
         }

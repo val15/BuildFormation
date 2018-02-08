@@ -100,9 +100,9 @@ namespace BuildFormation.Models
 
 
         #region Document
-        Document CreerDocument(string titre, string chemin, Membre auteur, string theme, DateTime dateDePublication, string description);
-        bool ModifierDocument(int id, string titre, string chemin, string theme, string description);
-        Document ObtenirDocument(int id);
+        Document CreerDocument(string titre, string nom, Membre auteur, string theme, DateTime dateDePublication, string description,int nbPages);
+        bool ModifierDocument(int id, string titre, string nom, string theme, string description);
+        Document ObtenirDocument(int? id);
         List<Document> ObtenirListeDerniersDocuments(int limit);
         List<Document> ObtenirListeDocuments();
 
