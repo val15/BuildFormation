@@ -1,0 +1,37 @@
+﻿@model BuildFormation.Models.Membre
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bivenu @Model.Pseudo</h2>
+<h3>Votre status : @Model.Privilege.ToString()</h3>
+<h3>Vos topics : @Html.ActionLink(@Model.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = Model.Id }, null)</h3>
+@Html.ActionLink("ajouter un nouveau topic", "CreerTopic", "Topic")
+
+<h3>Vos documents : @Model.Documents.Count.ToString()</h3>
+<h3>Vos informations</h3>
+<div>
+
+    <div>
+        <b>Pseudo : </b> @Model.Pseudo
+        <br />
+        <b>Nom : </b> @Model.Nom
+        <br />
+        <b>Prenom : </b> @Model.Prenom
+        <br />
+        <b>Email : </b> @Model.Email
+        <br />
+        <b>Adresse : </b> @Model.Adresse
+        <br />
+    </div>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Modifier profile" />
+    }
+
+</div>

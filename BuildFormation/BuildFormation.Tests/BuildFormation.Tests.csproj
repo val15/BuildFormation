@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BuildFormation\BuildFormation.csproj">
-      <Project>{84E18CF9-4B03-496E-88E9-506706ED22D5}</Project>
+      <Project>{b3d496cf-459d-4114-947c-17a292851cd6}</Project>
       <Name>BuildFormation</Name>
     </ProjectReference>
   </ItemGroup>

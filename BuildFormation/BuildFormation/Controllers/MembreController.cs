@@ -26,6 +26,15 @@ namespace BuildFormation.Controllers
             var listeMembre = _dal.ObtenirListeMembres();
             return View(listeMembre);
         }
+        //modification compte
+
+        //modification topic
+        
+        //modidifcation doucument
+
+        //creer topic
+
+        //creer document
 
         public ActionResult AfficherMembre(int? id)
         {

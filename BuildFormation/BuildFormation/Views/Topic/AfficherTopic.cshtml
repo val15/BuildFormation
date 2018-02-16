@@ -1,19 +1,47 @@
-﻿@model BuildFormation.Models.Topic
+﻿@model BuildFormation.ViewModels.AfficherTopicViewModel
 @{
+    /**/
+
     ViewBag.Title = "AfficherTopic";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+    inlineMath: [ ["\\(","\\)"] ],
+    displayMath: [ ["\\[","\\]"] ],
+    processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 
-<h2>@Model.Titre</h2>
-<b> Auteur : </b> @Model.Auteur.Nom
-<b> Le : </b> @Model.DateDePublication
-<b> theme : </b> @Model.Theme
+
+
+
+<h2>@Model.Topic.Titre</h2>
+<b> Auteur : </b> @Model.Topic.Auteur.Nom
+<b> Theme : </b> @Model.Topic.Theme
+<b> Publier le : </b> @Model.Topic.DateDePublication
+@if (Model.Topic.DateDernierModification != null)
+{
+    <b>Dernier mije à jour le :</b> @Model.Topic.DateDernierModification
+}
 <br />
 <b> description : </b>
-@Model.Description
-<br/>
+@Model.Topic.Description
+<br />
 <b> Contenu : </b>
 <br />
-@Model.Contenu
+@Model.Topic.Contenu
+<br />
+@if (Model.Topic.Auteur == Model.MembreActuel)//si le membre est l'auteur, il pourras modifier le topic
+{
+    @Html.ActionLink("modifier", "ModifierTopic", new { id = Model.Topic.Id })
+}
 
 

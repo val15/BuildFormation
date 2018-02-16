@@ -1,0 +1,42 @@
+﻿@model BuildFormation.ViewModels.MembreViewModel
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+<div>
+    @if (Model.Authentifie)
+    {
+        <h3>
+            Vous êtes déjà authentifié avec le login :
+            @Model.Membre.Pseudo
+        </h3>
+        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+    }
+    else
+    {
+        <p>
+            Veuillez vous authentifier :
+        </p>
+        using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(m => m.PseudoOuEmail)
+                @Html.TextBoxFor(m => m.PseudoOuEmail)
+                @Html.ValidationMessageFor(m => m.PseudoOuEmail)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.MotDePasse)
+                @Html.PasswordFor(m => m.MotDePasse)
+                @Html.ValidationMessageFor(m => m.MotDePasse)
+            </div>
+            <input type="submit" value="Se connecter" />
+            <br />
+            @Html.ActionLink("Créer un compte", "CreerCompte")
+        }
+    }
+</div>
+

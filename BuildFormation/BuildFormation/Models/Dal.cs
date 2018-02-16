@@ -478,7 +478,7 @@ namespace BuildFormation.Models
         public Membre CreerMembre(string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege,
             string motDePasse, Specialite specialite)
         {
-            var mdpHacher = EncodeMd5(motDePasse);
+            var mdpHacher = Tools.Outils.EncodeMd5(motDePasse);
 
             _bdd.Membres.Add(new Membre
             {
@@ -519,7 +519,7 @@ namespace BuildFormation.Models
                 membre.Email = email;
                 membre.Privilege = privilege;
                 membre.Specialite = specialite;
-                membre.MotDePasse = EncodeMd5(motDePasse);
+                membre.MotDePasse = Tools.Outils.EncodeMd5(motDePasse);
             }
 
             try
@@ -560,7 +560,23 @@ namespace BuildFormation.Models
         {
             return _bdd.Membres.FirstOrDefault(m => m.Id == id);
         }
+        public Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse)
+        {
+            var mdpHacher = Tools.Outils.EncodeMd5(motDePasse);
+            
+            return _bdd.Membres.FirstOrDefault(m =>
+                (m.Pseudo == pseudoOuAdresseEmail || m.Email == pseudoOuAdresseEmail) &&
+                m.MotDePasse == mdpHacher);
 
+        }
+
+        public Membre ObtenirMembre(string idString)
+        {
+            if (int.TryParse(idString, out var id))
+                return ObtenirMembre(id);
+            return null;
+        }
+    
         public List<Membre> ObtenirListeMembres()
         {
             return _bdd.Membres.ToList();
@@ -571,23 +587,12 @@ namespace BuildFormation.Models
             return _bdd.Membres.Count();
         }
 
-        public Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse)
-        {
-            string mdpHacher = EncodeMd5(motDePasse);
-            return _bdd.Membres.FirstOrDefault(m =>
-                (m.Pseudo == pseudoOuAdresseEmail || m.Email == pseudoOuAdresseEmail) &&
-                m.MotDePasse == mdpHacher);
-
-        }
+      
 
 
 
 
-        public string EncodeMd5(string motDePasse)
-        {
-            string motDePasseSel = "BuildFormation" + motDePasse + "ASP.NET MVC";
-            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
-        }
+      
 
         #endregion
 

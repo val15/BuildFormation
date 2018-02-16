@@ -1,0 +1,64 @@
+﻿@model BuildFormation.ViewModels.ModifierCompteViewModel
+@{
+    ViewBag.Title = "ModifierCompte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Modifier mon compte</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <div>
+                @Html.LabelFor(model => model.Membre.Pseudo)
+                @Html.TextBoxFor(model => model.Membre.Pseudo)
+                @Html.ValidationMessageFor(model => model.Membre.Pseudo) @*pour valider l'e-mail*@
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Membre.Nom)
+                @Html.TextBoxFor(model => model.Membre.Nom)
+                @Html.ValidationMessageFor(model => model.Membre.Nom) @*pour valider le nom*@
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Membre.Prenom)
+                @Html.TextBoxFor(model => model.Membre.Prenom)
+                @Html.ValidationMessageFor(model => model.Membre.Prenom) @*pour valider le numero de telephone*@
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Membre.Email)
+                @Html.TextBoxFor(model => model.Membre.Email)
+                @Html.ValidationMessageFor(model => model.Membre.Email) @*pour valider l'e-mail*@
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Membre.Adresse)
+                @Html.TextBoxFor(model => model.Membre.Adresse)
+                @Html.ValidationMessageFor(model => model.Membre.Adresse) @*pour valider l'e-mail*@
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Membre.MotDePasse)
+                @Html.PasswordFor(m => m.Membre.MotDePasse)
+                @Html.ValidationMessageFor(m => m.Membre.MotDePasse)
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.NouveauMotDePasse1)
+                @Html.PasswordFor(m => m.NouveauMotDePasse1)
+                @Html.ValidationMessageFor(m => m.NouveauMotDePasse1)
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.NouveauMotDePasse2)
+                @Html.PasswordFor(m => m.NouveauMotDePasse2)
+                @Html.ValidationMessageFor(m => m.NouveauMotDePasse2)
+            </div>
+
+
+            <br />
+            <input type="submit" value="Modifier" />
+        </fieldset>
+    }
+</div>
+

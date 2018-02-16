@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace BuildFormation.Models
@@ -26,15 +28,17 @@ namespace BuildFormation.Models
             context.Specialites.Add(new Specialite {Nom = "Mécanique", Option = option});
             context.SaveChanges();
             var specialite = context.Specialites.ToList().Last();
+
+          
             context.Membres.Add(new Membre
             {
                 Nom = "Randre",
                 Prenom = "Zo",
-                Pseudo = "Zo00",
+                Pseudo = "z",
                 Adresse = "19BisTana",
                 Email = "test@ts.com",
                 Privilege = Privilege.Etudiant,
-                MotDePasse = "hreyrey",
+                MotDePasse = EncodeMd5("z"),//IL FAU SHACHER LE MOT DE PASSE
                 Specialite = specialite
                
             });
@@ -44,11 +48,11 @@ namespace BuildFormation.Models
             {
                 Nom = "LePony",
                 Prenom = "Fiaritso",
-                Pseudo = "LePond10",
+                Pseudo = "e",
                 Adresse = "19BisTana",
                 Email = "test0jhhre@ts.com",
                 Privilege = Privilege.Professeur,
-                MotDePasse = "rjjejrer",
+                MotDePasse = EncodeMd5("e"),
                 Specialite = specialite
 
             });
@@ -119,7 +123,7 @@ namespace BuildFormation.Models
             context.Topics.Add(new Topic
             {
                 Titre = "topic 06",
-                Contenu = "simple test 2",
+                Contenu = "\\[ \\int_{a}^{b} f(x) \\, \\mathrm{d}x \\]",
                 Auteur = membre1,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
@@ -159,7 +163,7 @@ namespace BuildFormation.Models
             context.Topics.Add(new Topic
             {
                 Titre = "topic 12",
-                Contenu = "simple test 2",
+                Contenu = "\\[ \\int_{a}^{b} f(x) \\, \\mathrm{d}x \\]",
                 Auteur = membre1,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
@@ -322,6 +326,11 @@ namespace BuildFormation.Models
             // var lstTopics = _dal.ObtenirListeTopics();
 
             base.Seed(context);
+        }
+        public string EncodeMd5(string motDePasse)
+        {
+            string motDePasseSel = "BuildFormation" + motDePasse + "ASP.NET MVC";
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
         }
     }
 }

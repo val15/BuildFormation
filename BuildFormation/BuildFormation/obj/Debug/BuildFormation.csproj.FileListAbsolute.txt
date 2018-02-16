@@ -1,8 +1,12 @@
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csprojResolveAssemblyReference.cache
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csproj.CoreCompileInputs.cache
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\ApplicationInsights.config
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\BuildFormation.dll.config
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\BuildFormation.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\BuildFormation.pdb
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Antlr3.Runtime.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.SqlServer.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.AI.Agent.Intercept.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.AI.DependencyCollector.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -21,6 +25,8 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.De
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.Razor.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\WebGrease.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.SqlServer.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Helpers.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Mvc.xml
@@ -43,11 +49,5 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.Razor.re
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.Razor.resources.dll
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csprojResolveAssemblyReference.cache
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csproj.CoreCompileInputs.cache
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.pdb
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.dll
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.SqlServer.dll
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.xml
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.SqlServer.xml

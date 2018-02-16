@@ -369,7 +369,7 @@ namespace BuildFormation.Tests
             Assert.AreEqual("II2300Tazo", membre.Adresse);
             Assert.AreEqual("test@ts.com", membre.Email);
             Assert.AreEqual(Privilege.Etudiant, membre.Privilege);
-            Assert.AreEqual(_dal.EncodeMd5("hreyrey"), membre.MotDePasse);
+            Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey"), membre.MotDePasse);
 
             var lstmembres = _dal.ObtenirListeMembres();
 
@@ -381,13 +381,44 @@ namespace BuildFormation.Tests
             Assert.AreEqual("II2300Tazo2", lstmembres[1].Adresse);
             Assert.AreEqual("test@ts2.com", lstmembres[1].Email);
             Assert.AreEqual(Privilege.Professeur, lstmembres[1].Privilege);
-            Assert.AreEqual(_dal.EncodeMd5("hreyrey2"), lstmembres[1].MotDePasse);
+            Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey2"), lstmembres[1].MotDePasse);
 
         }
 
         [TestMethod]
         public void
-            ModofocationEtSuppressionMembre_AvecDeuxMembres_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
+           AuThentificationMembreCreerUnMembre_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_AuthentifierLemembre()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+            Assert.IsNotNull(ecole);
+            var faculte = _dal.CreerFaculte("Science", ecole);
+            Assert.IsNotNull(faculte);
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+            Assert.IsNotNull(filiere);
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+            Assert.IsNotNull(option);
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            Assert.IsNotNull(specialite);
+            var membre = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            membre = _dal.Authentifier("Zo00", "hreyrey");
+
+
+            Assert.IsNotNull(membre);
+            Assert.AreEqual("Randre", membre.Nom);
+            Assert.AreEqual("Zo", membre.Prenom);
+            Assert.AreEqual("Zo00", membre.Pseudo);
+            Assert.AreEqual("II2300Tazo", membre.Adresse);
+            Assert.AreEqual("test@ts.com", membre.Email);
+            Assert.AreEqual(Privilege.Etudiant, membre.Privilege);
+            Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey"), membre.MotDePasse);
+
+           
+        }
+
+        [TestMethod]
+        public void
+            ModifocationEtSuppressionMembre_AvecDeuxMembres_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
         {
             var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
 
@@ -419,7 +450,7 @@ namespace BuildFormation.Tests
             Assert.AreEqual("II2300Tazo", membre2.Adresse);
             Assert.AreEqual("test@ts.com", membre2.Email);
             Assert.AreEqual(Privilege.Administrateur, membre2.Privilege);
-            Assert.AreEqual(_dal.EncodeMd5("hreyrey"), membre2.MotDePasse);
+            Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey"), membre2.MotDePasse);
         }
 
         [TestMethod]

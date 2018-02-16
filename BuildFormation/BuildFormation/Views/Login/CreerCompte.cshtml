@@ -1,0 +1,51 @@
+﻿@model BuildFormation.Models.Membre
+@{
+    ViewBag.Title = "CreerCompte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreerCompte</h2>
+<div>
+    <p>Créer un compte : </p>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(m => m.Nom)
+            @Html.TextBoxFor(m => m.Nom)
+            @Html.ValidationMessageFor(m => m.Nom)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Prenom)
+            @Html.TextBoxFor(m => m.Prenom)
+            @Html.ValidationMessageFor(m => m.Prenom)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Pseudo)
+            @Html.TextBoxFor(m => m.Pseudo)
+            @Html.ValidationMessageFor(m => m.Pseudo)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.MotDePasse)
+            @Html.PasswordFor(m => m.MotDePasse)
+            @Html.ValidationMessageFor(m => m.MotDePasse)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Adresse)
+            @Html.TextBoxFor(m => m.Adresse)
+            @Html.ValidationMessageFor(m => m.Adresse)
+        </div>
+       
+
+
+        
+       
+        <input type="submit" value="Créer" />
+    }
+</div>
+
+

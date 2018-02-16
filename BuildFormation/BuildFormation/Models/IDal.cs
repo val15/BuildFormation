@@ -78,12 +78,14 @@ namespace BuildFormation.Models
 
         bool ModifierMembre(int id, string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege, string motDePasse, Specialite specialite);
          Membre ObtenirMembre(int? id);
+         Membre ObtenirMembre(string idString);
+
         List<Membre> ObtenirListeMembres();
         int ObtenirNombreMembre();
 
         Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse);
         bool SupprimerMembre(int id);
-        string EncodeMd5(string motDePasse);
+     
 
         #endregion
 

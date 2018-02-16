@@ -8,6 +8,7 @@ using BuildFormation.ViewModels;
 
 namespace BuildFormation.Controllers
 {
+    [Authorize]
     public class DocumentController : Controller
     {
         private readonly IDal _dal;

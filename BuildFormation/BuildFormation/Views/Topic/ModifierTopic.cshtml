@@ -1,0 +1,141 @@
+﻿@model BuildFormation.Models.Topic
+@{
+    ViewBag.Title = "CreerTopic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Modief le topic @Model.Titre</h2>
+
+
+<script>
+    function commande(nom, argument) {
+        if (typeof argument === 'undefined') {
+            argument = '';
+        }
+        // Exécuter la commande
+        document.execCommand(nom, false, argument);
+    }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+    inlineMath: [ ["\\(","\\)"] ],
+    displayMath: [ ["\\[","\\]"] ],
+    processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+
+
+<div>
+    <div>
+        @using (Html.BeginForm("AppercuModifier", "Topic"))
+        {
+        <fieldset>
+            <legend>Modifier un topic (pour les formule latex: utilise le syntaxe En dehors d'un texte ("maths hors ligne"))</legend>
+
+
+            <div>
+                @Html.LabelFor(model => model.Contenu)
+                <br />
+                @Html.TextAreaFor(model => model.Contenu,@*new { rows = "6", cols = "10" }*@/**/
+                                                                           /**/
+                                                                           /**/
+                                                                           /**/
+                                                                           new { Style = "width: 100%; height:150px;" })
+                @Html.ValidationMessageFor(model => model.Contenu) @*pour valider le nom*@
+            </div>
+
+            <br />
+
+            <div>
+                @Html.TextBoxFor(model => model.Id, new { Style = "width: 0px; height:0px;" })
+                @Html.TextBoxFor(model => model.Titre, new { Style = "width: 0px; height:0px;" })
+                @Html.TextBoxFor(model => model.Theme, new { Style = "width: 0px; height:0px;" })
+                @Html.TextBoxFor(model => model.Description, new { Style = "width: 0px; height:0px;" })
+
+            </div>
+            <br />
+            <input type="submit" value="appercu" name="appercu" />
+
+        </fieldset>
+        }
+    </div>
+
+
+
+   
+
+
+    <div>
+        @if (Model.Contenu != null)
+        {
+            <div id="editeur" contentEditable="false">@Model.Contenu</div>
+            @*@Html.ActionLink("Appercu", "Index", "MomCompte", routeValues: new { contenu= "Contenu" }, htmlAttributes: new { target = "_blank" })*@
+
+        }
+    </div>
+
+    @*<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+        <input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
+        <input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
+        <div id="editeur" contentEditable>@Model.Contenu</div>
+    *@
+
+
+
+
+
+
+
+    @*Of a set \(\mathcal{S}\) is a bijection \(\psi : \mathcal{S} \rightarrow \mathcal{S}\).
+        \[ \int_{a}^{b} f(x) \, \mathrm{d}x \]*@
+</div>
+
+
+
+<div>
+    @using (Html.BeginForm("ModifierTopic", "Topic"))
+    {
+        <fieldset>
+            <div>
+
+                <br />
+                @Html.TextAreaFor(model => model.Contenu,@*new { rows = "6", cols = "10" }*@/**/
+                                                          /**/
+                                                          /**/
+                                                          new { Style = "width: 0px; height:0px;" })
+                @Html.ValidationMessageFor(model => model.Contenu) @*pour valider le nom*@
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.Id, new { Style = "width: 0px; height:0px;" })
+                @Html.LabelFor(model => model.Titre)
+                @Html.TextBoxFor(model => model.Titre)
+                @Html.ValidationMessageFor(model => model.Titre)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Theme)
+                @Html.TextBoxFor(model => model.Theme)
+                @Html.ValidationMessageFor(model => model.Theme)
+            </div>
+
+            <br />
+            <div>
+                @Html.LabelFor(model => model.Description)
+                @Html.TextBoxFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+            <br />
+
+            <input type="submit" value="modifier" />
+
+        </fieldset>
+    }
+</div>
+
