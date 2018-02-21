@@ -1,0 +1,7 @@
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\b\BuildFormation\bin\ApplicationInsights.config
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\b\BuildFormation\bin\BuildFormation.dll.config
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\b\BuildFormation\bin\BuildFormation.dll
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\b\BuildFormation\bin\BuildFormation.pdb
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\i\BuildFormation\Debug\BuildFormation.csproj.CoreCompileInputs.cache
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\i\BuildFormation\Debug\BuildFormation.dll
+C:\prjVs\BuildFormation\BuildFormation\.vs\BuildFormation\lut\0\i\BuildFormation\Debug\BuildFormation.pdb

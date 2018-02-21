@@ -23,20 +23,37 @@
         </p>
         using (Html.BeginForm())
         {
-            <div>
-                @Html.LabelFor(m => m.PseudoOuEmail)
-                @Html.TextBoxFor(m => m.PseudoOuEmail)
-                @Html.ValidationMessageFor(m => m.PseudoOuEmail)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.MotDePasse)
-                @Html.PasswordFor(m => m.MotDePasse)
-                @Html.ValidationMessageFor(m => m.MotDePasse)
-            </div>
-            <input type="submit" value="Se connecter" />
+            <div class="form-group">
+                    @Html.LabelFor(model => model.PseudoOuEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PseudoOuEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PseudoOuEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+          
+        
             <br />
-            @Html.ActionLink("Créer un compte", "CreerCompte")
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="connexion" class="btn btn-default" />
+                </div>
+            </div>
+
+
+
+
         }
+        @Html.ActionLink("Créer un compte", "CreerCompte")
+
     }
+
 </div>
 

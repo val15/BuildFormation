@@ -51,3 +51,8 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.Razor.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.pdb
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.License.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.Pdf.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.mshtml.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.License.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.Pdf.xml

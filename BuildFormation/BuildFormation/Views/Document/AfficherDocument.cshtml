@@ -1,20 +1,25 @@
-﻿@model BuildFormation.Models.Document
+﻿@model BuildFormation.ViewModels.AfficherDocumentViewModel
 @{
     ViewBag.Title = "AfficherDocument";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Titre</h2>
-<b> Auteur : </b> @Model.Auteur.Nom
+<h2>@Model.Document.Titre</h2>
+<b> Auteur : </b> @Model.Document.Auteur.Nom
 <br />
-<b> Date de publication : </b> @Model.DateDePublication
+<b> Date de publication : </b> @Model.Document.DateDePublication
 <br />
-<b> Theme : </b> @Model.Theme
+<b> Theme : </b> @Model.Document.Theme
 <br />
-<b> Nobre de pages : </b> @Model.NbPages
+<b> Nobre de pages : </b> @Model.Document.NbPages
 <br />
 <b> description : </b>
 <br />
-@Model.Description
+@Model.Document.Description
 <br />
-<b> Lien : </b> @Html.ActionLink(@Model.Nom,"Consulter", new { id = @Model.Id })
+<b> Lien : </b> @Html.ActionLink(@Model.Document.Nom, "Consulter", new { id = @Model.Document.Id })
+<br />
+@if (Model.Document.Auteur == Model.MembreActuel)//si le membre est l'auteur, il pourras modifier le topic
+{
+    @Html.ActionLink("modifier", "ModifierDocument", new { id = Model.Document.Id })
+}

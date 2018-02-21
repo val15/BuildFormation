@@ -688,7 +688,7 @@ namespace BuildFormation.Models
         #endregion
 
         #region Document
-        public Document CreerDocument(string titre, string nom, Membre auteur, string theme, DateTime dateDePublication,string description, int nbPages)
+        public Document CreerDocument(string titre, string nom,string chemin,Membre auteur, string theme, DateTime dateDePublication,string description, int nbPages)
         {
             _bdd.Documents.Add(new Document
             {
@@ -698,11 +698,14 @@ namespace BuildFormation.Models
                 Theme = theme,
                 DateDePublication = dateDePublication,
                 Description = description,
-                NbPages = nbPages
+                NbPages = nbPages,
+                Chemin = chemin
+
             });
             try
             {
-                _bdd.SaveChanges();
+              //  System.IO.Directory.CreateDirectory("~/Documents/" + chemin);
+                 _bdd.SaveChanges();
                 return _bdd.Documents.ToList().Last();
             }
             catch (Exception e)

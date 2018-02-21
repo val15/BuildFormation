@@ -1,11 +1,11 @@
 ﻿@model BuildFormation.Models.Membre
 @{
-                /**/
+    /**/
 
-                /**/
+    /**/
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Bivenu @Model.Pseudo</h2>
@@ -13,7 +13,14 @@
 <h3>Vos topics : @Html.ActionLink(@Model.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = Model.Id }, null)</h3>
 @Html.ActionLink("ajouter un nouveau topic", "CreerTopic", "Topic")
 
-<h3>Vos documents : @Model.Documents.Count.ToString()</h3>
+
+@if (Model.Privilege == BuildFormation.Models.Privilege.Professeur)//car seul les proffeceur aont le droit de créer des documents
+{
+    <h3>Vos documents : @Html.ActionLink(@Model.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = Model.Id }, null)</h3>
+    @Html.ActionLink("ajouter un nouveau ducument", "CreerDocument", "Document")
+
+}
+
 <h3>Vos informations</h3>
 <div>
 
@@ -31,7 +38,11 @@
     </div>
     @using (Html.BeginForm())
     {
-        <input type="submit" value="Modifier profile" />
+        <div class="form-group">
+            <div>
+                <input type="submit" value="Modifier" class="btn btn-default" />
+            </div>
+        </div>
     }
 
 </div>

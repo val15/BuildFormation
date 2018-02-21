@@ -8,57 +8,82 @@
 <div>
     @using (Html.BeginForm())
     {
-        <fieldset>
-            <div>
-                @Html.LabelFor(model => model.Membre.Pseudo)
-                @Html.TextBoxFor(model => model.Membre.Pseudo)
-                @Html.ValidationMessageFor(model => model.Membre.Pseudo) @*pour valider l'e-mail*@
-            </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Membre.Pseudo, htmlAttributes: new { @class = "control-label col-md-2" })
 
-            <div>
-                @Html.LabelFor(model => model.Membre.Nom)
-                @Html.TextBoxFor(model => model.Membre.Nom)
-                @Html.ValidationMessageFor(model => model.Membre.Nom) @*pour valider le nom*@
-            </div>
-            <div>
-                @Html.LabelFor(model => model.Membre.Prenom)
-                @Html.TextBoxFor(model => model.Membre.Prenom)
-                @Html.ValidationMessageFor(model => model.Membre.Prenom) @*pour valider le numero de telephone*@
-            </div>
+            <div class="col-md-10">
 
-            <div>
-                @Html.LabelFor(model => model.Membre.Email)
-                @Html.TextBoxFor(model => model.Membre.Email)
-                @Html.ValidationMessageFor(model => model.Membre.Email) @*pour valider l'e-mail*@
-            </div>
+                @Html.EditorFor(model => model.Membre.Pseudo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Membre.Pseudo, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
 
-            <div>
-                @Html.LabelFor(model => model.Membre.Adresse)
-                @Html.TextBoxFor(model => model.Membre.Adresse)
-                @Html.ValidationMessageFor(model => model.Membre.Adresse) @*pour valider l'e-mail*@
             </div>
-            <div>
-                @Html.LabelFor(m => m.Membre.MotDePasse)
-                @Html.PasswordFor(m => m.Membre.MotDePasse)
-                @Html.ValidationMessageFor(m => m.Membre.MotDePasse)
+        </div>
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Membre.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Membre.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Membre.Nom, "", new { @class = "text-danger" }) @*pour valider le nom*@
             </div>
-
-            <div>
-                @Html.LabelFor(m => m.NouveauMotDePasse1)
-                @Html.PasswordFor(m => m.NouveauMotDePasse1)
-                @Html.ValidationMessageFor(m => m.NouveauMotDePasse1)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Membre.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Membre.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Membre.Prenom, "", new { @class = "text-danger" }) @*pour valider le numero de telephone*@
             </div>
-
-            <div>
-                @Html.LabelFor(m => m.NouveauMotDePasse2)
-                @Html.PasswordFor(m => m.NouveauMotDePasse2)
-                @Html.ValidationMessageFor(m => m.NouveauMotDePasse2)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Membre.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Membre.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Membre.Email, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
             </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Membre.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.Membre.Adresse, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Membre.Adresse, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Membre.MotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Membre.MotDePasse, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Membre.MotDePasse, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NouveauMotDePasse1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.NouveauMotDePasse1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NouveauMotDePasse1, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NouveauMotDePasse2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.NouveauMotDePasse2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NouveauMotDePasse2, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+            </div>
+        </div>
 
 
-            <br />
-            <input type="submit" value="Modifier" />
-        </fieldset>
-    }
-</div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Modifier" class="btn btn-default" />
+            </div>
+        </div>
+
+
+    </div>
+        }
+    </Div>
 

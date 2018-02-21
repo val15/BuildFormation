@@ -33,7 +33,7 @@ namespace BuildFormation.Controllers
             {
                 Topic topic = _dal.ObtenirTopic(id);
                 if (topic== null)
-                    return View("Error");
+                    return HttpNotFound();
                 var membre = _dal.ObtenirMembre(HttpContext.User.Identity.Name);
 
                 AfficherTopicViewModel afficherTopicViewModel = new AfficherTopicViewModel { MembreActuel = membre, Topic = topic };

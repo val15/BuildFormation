@@ -1,0 +1,71 @@
+﻿@model BuildFormation.Models.Document
+@{
+    ViewBag.Title = "ModifierDocument";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Modifier Document</h2>
+
+@using (Html.BeginForm("EditUploadFile", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.TextBox("file", "", new { type = "file", accept = ".pdf", htmlAttributes = new { @class = "form-control" } })
+                <div class="text-danger">
+                    @ViewBag.Message
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Envoyer" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+
+}

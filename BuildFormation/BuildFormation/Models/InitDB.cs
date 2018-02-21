@@ -178,6 +178,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin="chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -190,6 +191,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -202,6 +204,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -214,6 +217,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -226,6 +230,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -238,6 +243,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -250,6 +256,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -262,6 +269,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -274,6 +282,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -286,6 +295,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -298,6 +308,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 
@@ -310,6 +321,7 @@ namespace BuildFormation.Models
                 Auteur = membre2,
                 Theme = "theme teste",
                 DateDePublication = DateTime.Now,
+                Chemin = "chemin",
                 Description = "ce docoment est second teste"
             });
 

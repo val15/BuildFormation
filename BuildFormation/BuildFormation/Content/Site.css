@@ -32,6 +32,10 @@ select {
     overflow: auto;
 }
 
+.AcceilGauche {
+    float: left;
+    width: 40%;
+}
 
 .AcceilDroite {
     float: right;

@@ -35,22 +35,24 @@
         <div>
             @using (Html.BeginForm("Appercu","Topic"))
             {
-                <fieldset>
-                    <legend>Creer un topic (pour les formule latex: utilise le syntaxe En dehors d'un texte ("maths hors ligne"))</legend>
-
-                
-                    <div>
-                        @Html.LabelFor(model => model.Contenu)
-                        <br />
-                        @Html.TextAreaFor(model => model.Contenu,@*new { rows = "6", cols = "10" }*@                                                                                                   /**/
-                            new { Style = "width: 100%; height:150px;" })
-                        @Html.ValidationMessageFor(model => model.Contenu) @*pour valider le nom*@
-                    </div>
-
+            <fieldset>
+                <legend>Creer un topic (pour les formule latex: utilise le syntaxe En dehors d'un texte ("maths hors ligne"))</legend>
+                <div>
+                    @Html.LabelFor(model => model.Contenu)
                     <br />
-                    <input type="submit" value="appercu" name="appercu"  />
+                    @Html.TextAreaFor(model => model.Contenu,@*new { rows = "6", cols = "10" }*@/**/
+                                 /**/
+                                 new { Style = "width: 100%; height:150px;" })
+                    @Html.ValidationMessageFor(model => model.Contenu) @*pour valider le nom*@
+                </div>
 
-                </fieldset>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Apperçu" class="btn btn-default" />
+                    </div>
+                </div>
+            </fieldset>
             }
         </div>
         
@@ -61,11 +63,9 @@
 
         <div>
             @if (Model.Contenu != null)
-    {
-        <div id="editeur" contentEditable="false">@Model.Contenu</div>
-        @*@Html.ActionLink("Appercu", "Index", "MomCompte", routeValues: new { contenu= "Contenu" }, htmlAttributes: new { target = "_blank" })*@
-              
-}
+            {
+                <div id="editeur" contentEditable="false">@Model.Contenu</div>
+            }
         </div>
         
         @*<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
@@ -91,36 +91,46 @@
     {
     <fieldset>
         <div>
-            
             <br />
-            @Html.TextBoxFor(model => model.Contenu,@*new { rows = "6", cols = "10" }*@/**/
-                                 /**/
-                                 new { Style = "width: 0px; height:0px;" })
+            @Html.TextBoxFor(model => model.Contenu, new { Style = "width: 0px; height:0px;" })
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
+                </div>
             </div>
-        <div>
-            @Html.LabelFor(model => model.Titre)
-            @Html.TextBoxFor(model => model.Titre)
-            @Html.ValidationMessageFor(model => model.Titre)
-        </div>
-        <div>
-            @Html.LabelFor(model => model.Theme)
-            @Html.TextBoxFor(model => model.Theme)
-            @Html.ValidationMessageFor(model => model.Theme)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <br />
-        <div>
-            @Html.LabelFor(model => model.Description)
-            @Html.TextAreaFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
-        <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <input type="submit" value="creer" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Creer" class="btn btn-default" />
+                </div>
+            </div>
+            
+        </div>
 
     </fieldset>
     }
 </div>
+
 
 
 
