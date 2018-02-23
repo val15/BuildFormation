@@ -1,5 +1,3 @@
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csprojResolveAssemblyReference.cache
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csproj.CoreCompileInputs.cache
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\ApplicationInsights.config
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\BuildFormation.dll.config
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\BuildFormation.dll
@@ -17,6 +15,8 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.ApplicationI
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.Web.Infrastructure.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Newtonsoft.Json.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.License.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.Pdf.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Helpers.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Mvc.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Optimization.dll
@@ -25,9 +25,13 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.De
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.Razor.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\WebGrease.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.mshtml.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\EntityFramework.SqlServer.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Newtonsoft.Json.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.License.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.Pdf.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Helpers.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Mvc.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.Optimization.xml
@@ -36,7 +40,6 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.xm
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.Deployment.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\System.Web.WebPages.Razor.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Antlr3.Runtime.pdb
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Newtonsoft.Json.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.ApplicationInsights.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.AI.DependencyCollector.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -49,10 +52,7 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.Razor.re
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\fr\System.Web.WebPages.Razor.resources.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csprojResolveAssemblyReference.cache
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.csproj.CoreCompileInputs.cache
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation\obj\Debug\BuildFormation.pdb
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.License.dll
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.Pdf.dll
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Microsoft.mshtml.dll
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.License.xml
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation\bin\Spire.Pdf.xml

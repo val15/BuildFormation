@@ -344,7 +344,7 @@ namespace BuildFormation.Tests
 
         [TestMethod]
         public void
-            CreerDeuxMembre_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_ObtientLeMembreLaListeDesmembre()
+            CreerDeuxMembre_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_ObtientLeMembreLaListeDesMembre()
         {
             var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
             Assert.IsNotNull(ecole);
@@ -370,6 +370,8 @@ namespace BuildFormation.Tests
             Assert.AreEqual("test@ts.com", membre.Email);
             Assert.AreEqual(Privilege.Etudiant, membre.Privilege);
             Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey"), membre.MotDePasse);
+            Assert.IsNotNull(membre.Specialite);
+            Assert.AreEqual("Mécanique", membre.Specialite.Nom);
 
             var lstmembres = _dal.ObtenirListeMembres();
 
@@ -382,6 +384,38 @@ namespace BuildFormation.Tests
             Assert.AreEqual("test@ts2.com", lstmembres[1].Email);
             Assert.AreEqual(Privilege.Professeur, lstmembres[1].Privilege);
             Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey2"), lstmembres[1].MotDePasse);
+            Assert.IsNotNull(lstmembres[1].Specialite);
+            Assert.AreEqual("Mécanique", lstmembres[1].Specialite.Nom);
+
+
+        }
+
+        [TestMethod]
+        public void
+            VerifierSiPseudoEtEmailExiste_AvecCreerDeuxMembre_UnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_RetourneTrueSiPseudoEtEmailExisteDejaEtFalseSiPseudoEtEmailNExistePas()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+            Assert.IsNotNull(ecole);
+            var faculte = _dal.CreerFaculte("Science", ecole);
+            Assert.IsNotNull(faculte);
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+            Assert.IsNotNull(filiere);
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+            Assert.IsNotNull(option);
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            Assert.IsNotNull(specialite);
+            var membre = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var membre2 = _dal.CreerMembre("Randre2", "Zo2", "Zo002", "II2300Tazo2", "test@ts2.com", Privilege.Professeur, "hreyrey2",
+                specialite);
+
+            Assert.IsTrue( _dal.PseudoMembreExisteDeja(membre.Pseudo));
+            Assert.IsTrue(_dal.PseudoMembreExisteDeja(membre2.Pseudo));
+            Assert.IsFalse(_dal.PseudoMembreExisteDeja("iea"));
+            Assert.IsTrue(_dal.EmailMembreExisteDeja(membre.Email));
+            Assert.IsTrue(_dal.EmailMembreExisteDeja(membre2.Email));
+            Assert.IsFalse(_dal.EmailMembreExisteDeja("iea"));
+
 
         }
 

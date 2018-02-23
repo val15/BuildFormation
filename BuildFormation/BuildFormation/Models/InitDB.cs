@@ -14,22 +14,37 @@ namespace BuildFormation.Models
         {
 
             context.Ecoles.Add(new Ecole { Nom = "IFT",Adresse = "LOT 2I39A Ampandrana", Telephone = "0330257032", Email = "ift@gmail.com"});
+            context.Ecoles.Add(new Ecole { Nom = "Ankatso", Adresse = "LOT 255 nakatso", Telephone = "0324578924", Email = "ankatsoini@gmail.com" });
             context.SaveChanges();
-            var ecole = context.Ecoles.ToList().Last();
+            var ecole = context.Ecoles.ToList()[1];
             context.Facultes.Add(new Faculte {Nom = "Science", Ecole = ecole});
+            context.Facultes.Add(new Faculte { Nom = "DEGS", Ecole = ecole });
             context.SaveChanges();
-            var faculte = context.Facultes.ToList().Last();
+            var faculte = context.Facultes.ToList()[0];
             context.Filieres.Add(new Filiere {Nom = "Mathematique", Faculte = faculte});
-            context.SaveChanges();
-            var filiere = context.Filieres.ToList().Last();
-            context.Options.Add(new Option {Nom = "Mathématiques appliquée", Filere = filiere});
-            context.SaveChanges();
-            var option = context.Options.ToList().Last();
-            context.Specialites.Add(new Specialite {Nom = "Mécanique", Option = option});
-            context.SaveChanges();
-            var specialite = context.Specialites.ToList().Last();
+            context.Filieres.Add(new Filiere { Nom = "Physique", Faculte = faculte });
 
-          
+            context.SaveChanges();
+            var filiere = context.Filieres.ToList()[0];
+            var filiere2 = context.Filieres.ToList()[1];
+            context.Options.Add(new Option {Nom = "Mathématiques appliquée", Filere = filiere});
+            context.Options.Add(new Option { Nom = "Physque applique", Filere = filiere2 });
+            context.SaveChanges();
+            var option = context.Options.ToList()[0];
+            var option2 = context.Options.ToList()[1];
+            context.Specialites.Add(new Specialite {Nom = "Mécanique", Option = option});
+            context.Specialites.Add(new Specialite { Nom = "Logique", Option = option });
+            context.Specialites.Add(new Specialite { Nom = "Statistique", Option = option });
+
+            context.Specialites.Add(new Specialite { Nom = "Nucleaire", Option = option2 });
+            context.Specialites.Add(new Specialite { Nom = "Quantique", Option = option2 });
+
+
+
+            context.SaveChanges();
+            var specialite = context.Specialites.ToList()[0];
+            var nom = specialite.Nom;
+
             context.Membres.Add(new Membre
             {
                 Nom = "Randre",

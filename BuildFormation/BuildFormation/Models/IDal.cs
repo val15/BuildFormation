@@ -85,7 +85,9 @@ namespace BuildFormation.Models
 
         Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse);
         bool SupprimerMembre(int id);
-     
+        bool PseudoMembreExisteDeja(string pseudo);
+        bool EmailMembreExisteDeja(string pseudo);
+
 
         #endregion
 

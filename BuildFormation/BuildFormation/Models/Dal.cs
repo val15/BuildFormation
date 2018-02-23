@@ -371,7 +371,7 @@ namespace BuildFormation.Models
 
         public Option ObtenirOption(string nom)
         {
-            return _bdd.Options.FirstOrDefault(f => f.Nom == nom);
+            return _bdd.Options.FirstOrDefault(o => o.Nom == nom);
         }
 
         public List<Option> ObtenirListeOptions()
@@ -587,12 +587,38 @@ namespace BuildFormation.Models
             return _bdd.Membres.Count();
         }
 
-      
+        public bool PseudoMembreExisteDeja(string pseudo)
+        {
+            if (_bdd.Membres.ToList().Count == 0)
+                return false;
+            var membre = _bdd.Membres.FirstOrDefault(m=> m.Pseudo == pseudo);
+            if (membre != null)
+                return true;
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public bool EmailMembreExisteDeja(string email)
+        {
+            if (_bdd.Membres.ToList().Count == 0)
+                return false;
+            var membre = _bdd.Membres.FirstOrDefault(m => m.Email == email);
+            if (membre != null)
+                return true;
+            else
+            {
+                return false;
+            }
+        }
 
 
 
 
-      
+
+
 
         #endregion
 

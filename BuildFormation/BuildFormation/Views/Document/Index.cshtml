@@ -1,10 +1,12 @@
-﻿@model  List<BuildFormation.Models.Document>
+﻿
+@model  List<BuildFormation.Models.Document>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Liste des documents  </h1>
+
 @foreach (var document in Model)
 {
     <biv>
@@ -13,9 +15,9 @@
         <b> Le : </b> @document.DateDePublication
         <b> Theme : </b> @document.Theme
         <b> Nombre de pages : </b> @document.NbPages
-        <br/>
+        <br />
         <b>Description :</b>
-        <br/>
+        <br />
         @document.Description
     </biv>
 }

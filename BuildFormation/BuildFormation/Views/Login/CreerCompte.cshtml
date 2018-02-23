@@ -1,77 +1,226 @@
-﻿@model BuildFormation.Models.Membre
+﻿@model BuildFormation.ViewModels.CreerCompteViewModel
 @{
     ViewBag.Title = "CreerCompte";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>CreerCompte</h2>
+<script src="~/Scripts/modernizr-2.6.2.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+
+
+
+
+
 <div>
     <p>Créer un compte : </p>
     @using (Html.BeginForm())
     {
-       
 
+        @Html.AntiForgeryToken()
 
-        <Div class="form-horizontal">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
 
-                <div class="col-md-10">
+            <div class="col-md-10">
 
-                    @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
 
-                </div>
             </div>
-            <div class="form-group">
+        </div>
+        <div class="form-group">
 
-                @Html.LabelFor(model => model.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" }) @*pour valider le nom*@
-                </div>
+            @Html.LabelFor(model => model.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" }) @*pour valider le nom*@
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Pseudo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Pseudo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Pseudo, "", new { @class = "text-danger" }) @*pour valider le numero de telephone*@
-                </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pseudo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Pseudo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Pseudo, "", new { @class = "text-danger" }) @*pour valider le numero de telephone*@
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
-                </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
 
-                    @Html.EditorFor(model => model.Adresse, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Adresse, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
-                </div>
+                @Html.EditorFor(model => model.Adresse, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adresse, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
-                </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                Ecole :
             </div>
+            <div class="col-md-10">
 
-
-            <br />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Creer" class="btn btn-default" />
-                </div>
+                @Html.DropDownList("Ecole", "Choisissez votre ecole")
             </div>
+        </div>
 
 
-        </Div>
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                Faculte :
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownList("Faculte", "Choisissez votre faculte")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                Filiere :
+            </div>
+            <div class="col-md-10">
+
+                @Html.DropDownList("Filiere", "Choisissez votre filiere")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                Option :
+            </div>
+            <div class="col-md-10">
+
+                @Html.DropDownList("Option", "Choisissez votre option")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Specialite, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("Specialite", "Choisissez votre spécialitée")
+           
+                @Html.ValidationMessageFor(model => model.Specialite, "", new { @class = "text-danger" }) @*pour valider le nom*@
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+    $(function ()
+    {
+        $("#Ecole").change(function () {
+            var nomEcole = $("#Ecole :selected").text();
+            var url = '@Url.Action("ChargerLesFacultesDeLEcole")';
+            var data1 = { "nomEcole": nomEcole };
+            $.post(url, data1, function (data)
+            {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Choisissez votre faculte" + "</option>");
+                for (var i = 0; i < data.length; i++) {
+
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }
+                $("#Faculte").html(items.join(' '));
+            })
+        });
+
+
+        $("#Faculte").change(function () {
+            var nomFaculte = $("#Faculte :selected").text();
+            var url = '@Url.Action("ChargerLesFilieresDeLaFaculte")';
+            var data1 = { "nomFaculte": nomFaculte };
+            $.post(url, data1, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Choisissez votre filiere" + "</option>");
+                for (var i = 0; i < data.length; i++) {
+
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }
+                $("#Filiere").html(items.join(' '));
+            })
+        });
+
+         $("#Filiere").change(function () {
+            var nomFiliere = $("#Filiere :selected").text();
+            var url = '@Url.Action("ChargerLesOptionsDuFiliere")';
+            var data1 = { "nomFiliere": nomFiliere };
+            $.post(url, data1, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Choisissez votre option" + "</option>");
+                for (var i = 0; i < data.length; i++) {
+
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }
+                $("#Option").html(items.join(' '));
+            })
+        });
+
+        $("#Option").change(function () {
+            var nomOption = $("#Option :selected").text();
+            var url = '@Url.Action("ChargerSpecialitesDeLOption")';
+            var data1 = { "nomOption": nomOption };
+            $.post(url, data1, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Choisissez votre spécialitée" + "</option>");
+                for (var i = 0; i < data.length; i++) {
+
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }
+                $("#Specialite").html(items.join(' '));
+            })
+        });
+
+          
+
+
+
+
+    });
+        </script>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotDePasseDeConfiramtion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.MotDePasseDeConfiramtion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MotDePasseDeConfiramtion, "", new { @class = "text-danger" }) @*pour valider l'e-mail*@
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Creer" class="btn btn-default" />
+            </div>
+        </div>
+
+
+    </div>
+
 
 
 
@@ -80,5 +229,11 @@
 
     }
 </div>
+
+@*TRES IMPORTANT POUR LA VALIDATION REMOT*@
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
 
 

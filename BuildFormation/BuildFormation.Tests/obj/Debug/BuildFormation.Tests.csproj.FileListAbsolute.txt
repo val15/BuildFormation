@@ -1,5 +1,3 @@
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\obj\Debug\BuildFormation.Tests.csprojResolveAssemblyReference.cache
-C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\obj\Debug\BuildFormation.Tests.csproj.CoreCompileInputs.cache
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\ApplicationInsights.config
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
@@ -24,6 +22,9 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web.WebPages.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web.WebPages.Razor.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web.Optimization.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Spire.Pdf.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Spire.License.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Microsoft.mshtml.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\BuildFormation.pdb
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\BuildFormation.dll.config
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\EntityFramework.xml
@@ -38,6 +39,8 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\System.Web.Optimization.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Spire.Pdf.xml
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\Spire.License.xml
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.Web.Helpers.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.Web.Mvc.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.Web.Razor.resources.dll
@@ -45,5 +48,7 @@ C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.Web.WebPages.Deployment.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.Web.WebPages.Razor.resources.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\bin\Debug\fr\System.Web.Optimization.resources.dll
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\obj\Debug\BuildFormation.Tests.csprojResolveAssemblyReference.cache
+C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\obj\Debug\BuildFormation.Tests.csproj.CoreCompileInputs.cache
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\obj\Debug\BuildFormation.Tests.dll
 C:\prjVs\BuildFormation\BuildFormation\BuildFormation.Tests\obj\Debug\BuildFormation.Tests.pdb

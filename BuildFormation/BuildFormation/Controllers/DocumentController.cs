@@ -84,6 +84,20 @@ namespace BuildFormation.Controllers
         {
             var membre = _dal.ObtenirMembre(HttpContext.User.Identity.Name);
             var document = new Document();
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = "Action", Value = "0" });
+
+            items.Add(new SelectListItem { Text = "Drama", Value = "1" });
+
+            items.Add(new SelectListItem { Text = "Comedy", Value = "2", Selected = true });
+
+            items.Add(new SelectListItem { Text = "Science Fiction", Value = "3" });
+
+            ViewBag.MovieType = items;
+
+
             return View(document);
         }
 
@@ -197,9 +211,10 @@ namespace BuildFormation.Controllers
         }
 
 
+      
 
 
-        public int NbPageDuDocument(string cheminEtNomDuFichier)
+            public int NbPageDuDocument(string cheminEtNomDuFichier)
         {
             PdfDocument document = new PdfDocument();
 

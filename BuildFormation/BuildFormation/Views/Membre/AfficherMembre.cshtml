@@ -1,4 +1,6 @@
 ﻿@model BuildFormation.Models.Membre
+@*A REMPLACER PAR UN VIEW MODEL*@
+
 @{
     ViewBag.Title = "AfficherMembre";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,8 +15,10 @@
 <br />
 <b> Status : </b> @Model.Privilege
 <br />
+<b> Specialite : </b> @Model.Specialite.Nom
+<br />
 <b>Nobre de topic: </b> @Html.ActionLink(@Model.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @Model.Id }, null)
 <br />
-<b>Nobre de document: </b> @Html.ActionLink(@Model.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @Model.Id }, null)  
+<b>Nobre de document: </b> @Html.ActionLink(@Model.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @Model.Id }, null)
 
 
