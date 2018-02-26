@@ -1,0 +1,41 @@
+﻿@model BuildFormation.ViewModels.RechercheMembreViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Adminstration</h2>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+        <li>@Html.ActionLink("Topics", "Index", "Topic")</li>
+        <li>@Html.ActionLink("Documents", "Index", "Document")</li>
+        <li>@Html.ActionLink("Membres", "Index", "Membre")</li>
+        <li>@Html.ActionLink("Mon compte", "Index", "MomCompte")</li>
+        <li>@Html.ActionLink("Deconnexion", "Deconnexion", "Login")</li>
+        <li>@Html.ActionLink("Administraction", "Index", "Admin")</li>
+
+    </ul>
+</div>
+
+
+@using (Ajax.BeginForm("ResultatsRechercheMembres", new AjaxOptions
+{
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "resultats",
+    OnFailure = "ErreurRecherche",
+    LoadingElementId = "chargement"
+}))
+{
+    @Html.TextBoxFor(m => m.Filtre);
+    <img id="chargement" src="~/Content/Images/ajax-loader.gif" style="display: none" alt="Chargement en cours..." />
+    <input type="submit" value="Rechercher" />
+   
+
+    <div id="resultats">
+        @{Html.RenderAction("ResultatsRechercheMembres", new { rechercheViewModel = Model });
+        }
+    </div>
+}
+

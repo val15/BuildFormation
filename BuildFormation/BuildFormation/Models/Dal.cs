@@ -480,19 +480,20 @@ namespace BuildFormation.Models
         {
             var mdpHacher = Tools.Outils.EncodeMd5(motDePasse);
 
-            _bdd.Membres.Add(new Membre
-            {
-                Nom = nom,
-                Prenom = prenom,
-                Pseudo = pseudo,
-                Adresse = adresse,
-                Email = email,
-                Privilege = privilege,
-                MotDePasse = mdpHacher,
-                Specialite = specialite
-            });
+            
             try
             {
+                _bdd.Membres.Add(new Membre
+                {
+                    Nom = nom,
+                    Prenom = prenom,
+                    Pseudo = pseudo,
+                    Adresse = adresse,
+                    Email = email,
+                    Privilege = privilege,
+                    MotDePasse = mdpHacher,
+                    Specialite = specialite
+                });
                 _bdd.SaveChanges();
                 return _bdd.Membres.ToList().Last();
             }
@@ -521,6 +522,27 @@ namespace BuildFormation.Models
                 membre.Specialite = specialite;
                 membre.MotDePasse = Tools.Outils.EncodeMd5(motDePasse);
             }
+
+            try
+            {
+                _bdd.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+        public bool ModifierPrivilegeMembre(int id, Privilege privilege)
+        {
+            var membre = ObtenirMembre(id);
+            if (membre == null)
+                return false;
+            else
+            {
+                membre.Privilege = privilege;
+             }
 
             try
             {
@@ -580,6 +602,13 @@ namespace BuildFormation.Models
         public List<Membre> ObtenirListeMembres()
         {
             return _bdd.Membres.ToList();
+        }
+
+        public List<Membre> RechercheMembres(string filtre)
+        {
+            //ToLower pour ignorer la casse
+            var filtreSansCasse = filtre.ToLower();
+            return _bdd.Membres.Where(mb => mb.Nom.ToLower().Contains(filtreSansCasse) || mb.Prenom.ToLower().Contains(filtreSansCasse) || mb.Pseudo.ToLower().Contains(filtreSansCasse)).ToList();
         }
 
         public int ObtenirNombreMembre()
@@ -707,6 +736,13 @@ namespace BuildFormation.Models
 
         }
 
+        public List<Topic> RechercheTopics(string filtre)
+        {
+            //ToLower pour ignorer la casse
+            var filtreSansCasse = filtre.ToLower();
+            return _bdd.Topics.Where(tp => tp.Titre.ToLower().Contains(filtreSansCasse) || tp.Auteur.Pseudo.ToLower().Contains(filtreSansCasse) || tp.Description.ToLower().Contains(filtreSansCasse) || tp.Theme.ToLower().Contains(filtreSansCasse)).OrderByDescending(tp=>tp.DateDePublication).ToList();
+        }
+
         public List<Topic> ObtenirListeDerniersTopics(int limit)
         {
             return limit==0 ? _bdd.Topics.OrderByDescending(t => t.DateDePublication).ToList() : _bdd.Topics.OrderByDescending(t => t.DateDePublication).Take(limit).ToList();
@@ -773,6 +809,13 @@ namespace BuildFormation.Models
         public List<Document> ObtenirListeDerniersDocuments(int limit)
         {
             return limit == 0 ? _bdd.Documents.OrderByDescending(d => d.DateDePublication).ToList() : _bdd.Documents.OrderByDescending(d => d.DateDePublication).Take(limit).ToList();
+        }
+
+        public List<Document> RechercheDocuments(string filtre)
+        {
+            //ToLower pour ignorer la casse
+            var filtreSansCasse = filtre.ToLower();
+            return _bdd.Documents.Where(dc => dc.Titre.ToLower().Contains(filtreSansCasse) || dc.Auteur.Pseudo.ToLower().Contains(filtreSansCasse) || dc.Description.ToLower().Contains(filtreSansCasse) || dc.Theme.ToLower().Contains(filtreSansCasse) || dc.Nom.ToLower().Contains(filtreSansCasse) ).OrderByDescending(dc => dc.DateDePublication).ToList();
         }
         public List<Document> ObtenirListeDocuments()
         {

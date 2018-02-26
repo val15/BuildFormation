@@ -12,7 +12,7 @@ namespace BuildFormation.Models
         [Required]
         public string Nom { get; set; }
 
-        public  Filiere Filere { get; set; }
+        public virtual Filiere Filere { get; set; }
 
         public virtual List<Specialite> Specialites { get; set; }
 

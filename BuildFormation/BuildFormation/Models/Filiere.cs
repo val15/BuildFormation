@@ -13,7 +13,7 @@ namespace BuildFormation.Models
         public string Nom { get; set; }
 
         
-        public  Faculte Faculte { get; set; }
+        public virtual Faculte Faculte { get; set; }
 
         public virtual List<Option> Options { get; set; }
     }

@@ -77,10 +77,13 @@ namespace BuildFormation.Models
         Membre CreerMembre(string nom, string prenom,string pseudo, string adresse, string email, Privilege privilege,string motDePasse, Specialite specialite);
 
         bool ModifierMembre(int id, string nom, string prenom, string pseudo, string adresse, string email, Privilege privilege, string motDePasse, Specialite specialite);
-         Membre ObtenirMembre(int? id);
+        bool ModifierPrivilegeMembre(int id, Privilege privilege);
+
+        Membre ObtenirMembre(int? id);
          Membre ObtenirMembre(string idString);
 
         List<Membre> ObtenirListeMembres();
+        List<Membre> RechercheMembres(string filtre);
         int ObtenirNombreMembre();
 
         Membre Authentifier(string pseudoOuAdresseEmail, string motDePasse);
@@ -99,6 +102,8 @@ namespace BuildFormation.Models
         List<Topic> ObtenirListeDerniersTopics(int limit);
         List<Topic> ObtenirListeTopics();
 
+        List<Topic> RechercheTopics(string filtre);
+
         bool SupprimerTopic(int id);
         #endregion
 
@@ -109,6 +114,7 @@ namespace BuildFormation.Models
         Document ObtenirDocument(int? id);
         List<Document> ObtenirListeDerniersDocuments(int limit);
         List<Document> ObtenirListeDocuments();
+        List<Document> RechercheDocuments(string filtre);
 
         bool SupprimerDocument(int id);
 

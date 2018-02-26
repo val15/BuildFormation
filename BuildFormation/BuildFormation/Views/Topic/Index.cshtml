@@ -1,20 +1,46 @@
-﻿@model  List<BuildFormation.Models.Topic>
+﻿
+@model BuildFormation.ViewModels.RechercheTopicViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Liste des topics  </h1>
-@foreach (var topic in Model)
+
+
+@using (Ajax.BeginForm("ResultatsRechercheTopics", new AjaxOptions
 {
-    <biv>
-        <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", new { id = topic.Id })</h2>
-      
-        <b> Auteur : </b> @topic.Auteur.Nom
-        <b> Le : </b> @topic.DateDePublication
-        <b> theme : </b> @topic.Theme
-        <br />
-        @topic.Description
-    </biv>
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "resultats",
+    OnFailure = "ErreurRecherche",
+    LoadingElementId = "chargement"
+}))
+
+{
+    @Html.TextBoxFor(m => m.Filtre);
+    <img id="chargement" src="~/Content/Images/ajax-loader.gif" style="display: none" alt="Chargement en cours..." />
+    <input type="submit" value="Rechercher" />
+   
+
+    <div id="resultats">
+        @{Html.RenderAction("ResultatsRechercheTopics", new { rechercheViewModel = Model });
+        }
+    </div>
 }
+
+
+
+@*@foreach (var topic in Model)
+    {
+        <biv>
+            <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", new { id = topic.Id })</h2>
+
+            <b> Auteur : </b> @topic.Auteur.Nom
+            <b> Le : </b> @topic.DateDePublication
+            <b> theme : </b> @topic.Theme
+            <br />
+            @topic.Description
+        </biv>
+    }*@
 

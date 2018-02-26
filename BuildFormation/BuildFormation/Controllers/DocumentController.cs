@@ -25,9 +25,22 @@ namespace BuildFormation.Controllers
         public ActionResult Index()
         {
 
-            var listeDocuments = _dal.ObtenirListeDerniersDocuments(0);
-            return View(listeDocuments);
+            //var listeDocuments = _dal.ObtenirListeDerniersDocuments(0);
+            return View();
         }
+
+        //pour la recherche
+        public ActionResult ResultatsRechercheDocuments(RechercheDocumentViewModel rechercheDocumentViewModel)
+        {
+            if (!string.IsNullOrWhiteSpace(rechercheDocumentViewModel.Filtre))
+                rechercheDocumentViewModel.ListeDesDocuments = _dal.RechercheDocuments(rechercheDocumentViewModel.Filtre);
+            else
+                rechercheDocumentViewModel.ListeDesDocuments = _dal.ObtenirListeDerniersDocuments(0);
+            // Thread.Sleep(1500);
+            return PartialView(rechercheDocumentViewModel);
+
+        }
+
 
         public ActionResult AfficherDocument(int? id)
         {

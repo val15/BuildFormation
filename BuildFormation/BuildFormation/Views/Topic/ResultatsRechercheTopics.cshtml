@@ -1,0 +1,15 @@
+﻿@model BuildFormation.ViewModels.RechercheTopicViewModel
+
+
+@foreach (var topic in Model.ListeDesTopics)
+{
+    <biv>
+        <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", new { id = topic.Id })</h2>
+
+        <b> Auteur : </b> @topic.Auteur.Pseudo
+        <b> Le : </b> @topic.DateDePublication
+        <b> theme : </b> @topic.Theme
+        <br />
+        @topic.Description
+    </biv>
+}

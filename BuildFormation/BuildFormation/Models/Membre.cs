@@ -25,7 +25,6 @@ namespace BuildFormation.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [Remote("VerifierEmailMembre", "Login", HttpMethod = "POST", ErrorMessage = "Cet adresse emai est déja pris")]//pour la verification asynchrone
-
         //  [RegularExpression(@"\A(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", ErrorMessage = "L'adresse mail est incorrecte")]
         public string Email { get; set; }
         [Required]
@@ -34,8 +33,8 @@ namespace BuildFormation.Models
 
         public Privilege Privilege { get; set; }
 
-
-        public  Specialite Specialite { get; set; }
+        
+        public virtual Specialite Specialite { get; set; }
 
         public virtual List<Topic> Topics { get; set; }
 

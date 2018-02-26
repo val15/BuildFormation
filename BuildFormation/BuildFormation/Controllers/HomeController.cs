@@ -23,6 +23,8 @@ namespace BuildFormation.Controllers
 
         public ActionResult Index()
         {
+           
+         
 
             var homeViewModel = new HomeViewModel
             {

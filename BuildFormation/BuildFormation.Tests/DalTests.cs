@@ -356,8 +356,9 @@ namespace BuildFormation.Tests
             Assert.IsNotNull(option);
             var specialite = _dal.CreerSpecialite("Mécanique", option);
             Assert.IsNotNull(specialite);
-            var membre = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+             _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
                 specialite);
+            var membre = _dal.ObtenirMembre(1);
             var membre2 = _dal.CreerMembre("Randre2", "Zo2", "Zo002", "II2300Tazo2", "test@ts2.com", Privilege.Professeur, "hreyrey2",
                 specialite);
 
@@ -389,6 +390,46 @@ namespace BuildFormation.Tests
 
 
         }
+
+
+        [TestMethod]
+        public void
+           RechercheMembre_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_RechercherLesMembres()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+            Assert.IsNotNull(ecole);
+            var faculte = _dal.CreerFaculte("Science", ecole);
+            Assert.IsNotNull(faculte);
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+            Assert.IsNotNull(filiere);
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+            Assert.IsNotNull(option);
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            Assert.IsNotNull(specialite);
+            _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+               specialite);
+            var membre = _dal.RechercheMembres("Zo")[0];
+             _dal.CreerMembre("Be2", "Zo2", "Zo002", "II2300Tazo2", "test@ts2.com", Privilege.Professeur, "hreyrey2",
+                specialite);
+            var membre2 = _dal.RechercheMembres("Be2")[0];
+
+            Assert.IsNotNull(membre);
+            Assert.AreEqual("Randre", membre.Nom);
+            Assert.AreEqual("Zo", membre.Prenom);
+            Assert.AreEqual("Zo00", membre.Pseudo);
+            Assert.AreEqual("II2300Tazo", membre.Adresse);
+            Assert.AreEqual("test@ts.com", membre.Email);
+            Assert.AreEqual(Privilege.Etudiant, membre.Privilege);
+            Assert.AreEqual(Tools.Outils.EncodeMd5("hreyrey"), membre.MotDePasse);
+            Assert.IsNotNull(membre.Specialite);
+            Assert.AreEqual("Mécanique", membre.Specialite.Nom);
+
+
+
+
+
+        }
+
 
         [TestMethod]
         public void
@@ -588,6 +629,32 @@ namespace BuildFormation.Tests
         }
 
         [TestMethod]
+        public void RechercheTopics_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_CreerDeuxTopics_ObtenirLesTopicsParRecherche()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+
+             _dal.CreerTopic("premier", "0123456789", membre1, "theme teste", DateTime.Now, "description01");
+             _dal.CreerTopic("second", "01234567892", membre1, "theme teste2", DateTime.Now, "description02");
+
+            var topic1 = _dal.RechercheTopics("premier")[0];
+            var topic2 = _dal.RechercheTopics("second")[0];
+
+            Assert.AreEqual("premier", topic1.Titre);
+            Assert.AreEqual("second", topic2.Titre);
+
+        }
+
+        [TestMethod]
         public void
             ModificationEtSuppressionTopic_AvecDeuxTopics_SupprimerLePremier_ModifierLeSecond_ObtientLeTopicSupplimEEgaleNullEtObtenirTopicModifie()
         {
@@ -664,6 +731,36 @@ namespace BuildFormation.Tests
             Assert.AreEqual("description02", lstDocuments[1].Description);
             Assert.AreEqual(10, lstDocuments[0].NbPages);
             Assert.AreEqual(11, lstDocuments[1].NbPages);
+        }
+
+
+        [TestMethod]
+        public void
+            RechercheDocuments_AvecUnNouvelEcole_NouveuDepartement_NouveauFaculte_NouveauFiliere_NouveauOption_NouvauxSpacialites_ObtientLesDeuxDocumentsParRecherche()
+        {
+            var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
+
+            var faculte = _dal.CreerFaculte("Science", ecole);
+
+            var filiere = _dal.CreerFiliere("Mathematique", faculte);
+
+            var option = _dal.CreerOption("Mathématiques appliquée", filiere);
+
+            var specialite = _dal.CreerSpecialite("Mécanique", option);
+            var membre1 = _dal.CreerMembre("Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Etudiant, "hreyrey",
+                specialite);
+            var datemantenant = DateTime.Now;
+            var cheminDoc1 = membre1.Specialite.Option.Filere.Faculte.Ecole.Nom + "/" + membre1.Specialite.Option.Filere.Faculte.Nom + "/" + DateTime.Now.Date.ToString();
+             _dal.CreerDocument("titre teste", "doc1", cheminDoc1, membre1, "theme1", datemantenant, "description01", 10);
+             _dal.CreerDocument("titre teste2", "doc2", cheminDoc1, membre1, "theme2", datemantenant, "description02", 11);
+          
+            var document1 = _dal.RechercheDocuments("doc1")[0];
+            var document2 = _dal.RechercheDocuments("doc2")[0];
+
+
+
+            Assert.AreEqual("doc1", document1.Nom);
+            Assert.AreEqual("doc2", document2.Nom);
 
         }
 
@@ -693,6 +790,8 @@ namespace BuildFormation.Tests
             Assert.AreEqual("premier", lstDocuments[1].Titre);
 
         }
+
+     
 
         [TestMethod]
         public void

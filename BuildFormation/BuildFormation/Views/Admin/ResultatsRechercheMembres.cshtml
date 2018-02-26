@@ -1,0 +1,43 @@
+﻿@model  BuildFormation.ViewModels.RechercheMembreViewModel
+<p>Vue partielle : @DateTime.Now.ToLongTimeString()</p>
+<p>Résultats de la recherche</p>
+@if (Model.ListeMembres.Count == 0)
+{
+    <p>Pas de résultat</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Pseudo</th>
+            <th>Email</th>
+            <th>Privilege</th>
+            <th>Modifier privilege</th>
+            <th>Supprimer</th>
+        </tr>
+        @foreach (var membre in Model.ListeMembres)
+        {
+        <tr>
+            <td>@membre.Nom</td>
+            <td>@membre.Prenom</td>
+            <td>@membre.Pseudo</td>
+            <td>@membre.Email</td>
+            <td>@membre.Privilege</td>
+            <td>@Html.ActionLink("Modifier privilege de " + membre.Pseudo, "ModifierPrivilege", new { id = membre.Id })</td>
+        </tr>
+        }
+    </table>
+}
+
+
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid black;
+    }
+</style>

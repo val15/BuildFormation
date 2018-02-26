@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using BuildFormation.Models;
@@ -22,9 +23,21 @@ namespace BuildFormation.Controllers
         }
         public ActionResult Index()
         {
-            var listeTopics= _dal.ObtenirListeDerniersTopics(0);
-            return View(listeTopics);
+           // var listeTopics= _dal.ObtenirListeDerniersTopics(0);
+            return View();
             
+        }
+
+        //pour la recherche
+        public ActionResult ResultatsRechercheTopics(RechercheTopicViewModel rechercheTopicViewModel)
+        {
+            if (!string.IsNullOrWhiteSpace(rechercheTopicViewModel.Filtre))
+                rechercheTopicViewModel.ListeDesTopics = _dal.RechercheTopics(rechercheTopicViewModel.Filtre);
+            else
+                rechercheTopicViewModel.ListeDesTopics = _dal.ObtenirListeDerniersTopics(0);
+           // Thread.Sleep(1500);
+            return PartialView(rechercheTopicViewModel);
+
         }
 
         public ActionResult AfficherTopic(int? id)

@@ -1,4 +1,4 @@
-﻿@model BuildFormation.Models.Membre
+﻿@model BuildFormation.ViewModels.AfficherMembreViewModel
 @*A REMPLACER PAR UN VIEW MODEL*@
 
 @{
@@ -6,19 +6,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Pseudo</h2>
-<b> Nom : </b> @Model.Nom
+<h2>@Model.Membre.Pseudo</h2>
+<b> Nom : </b> @Model.Membre.Nom
 <br />
-<b> Prenom : </b> @Model.Prenom
+<b> Prenom : </b> @Model.Membre.Prenom
 <br />
-<b> E-mail : </b> @Model.Email
+<b> E-mail : </b> @Model.Membre.Email
 <br />
-<b> Status : </b> @Model.Privilege
+<b> Status : </b> @Model.Membre.Privilege
 <br />
-<b> Specialite : </b> @Model.Specialite.Nom
+<b>Ecole et info : </b>@Model.NomEcole ; @Model.NomFaculte ; @Model.NomFiliere ; @Model.NomOption ; @Model.NomSpecialite
 <br />
-<b>Nobre de topic: </b> @Html.ActionLink(@Model.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @Model.Id }, null)
+<b>Nobre de topic: </b> @Html.ActionLink(@Model.Membre.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @Model.Membre.Id }, null)
 <br />
-<b>Nobre de document: </b> @Html.ActionLink(@Model.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @Model.Id }, null)
+<b>Nobre de document: </b> @Html.ActionLink(@Model.Membre.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @Model.Membre.Id }, null)
 
 

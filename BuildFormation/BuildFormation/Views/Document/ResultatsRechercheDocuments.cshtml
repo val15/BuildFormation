@@ -1,0 +1,15 @@
+﻿@model BuildFormation.ViewModels.RechercheDocumentViewModel
+@foreach (var document in Model.ListeDesDocuments)
+{
+    <biv>
+        <h2>@Html.ActionLink(@document.Titre, "AfficherDocument", new { id = document.Id })</h2>
+        <b> Auteur : </b> @document.Auteur.Pseudo
+        <b> Le : </b> @document.DateDePublication
+        <b> Theme : </b> @document.Theme
+        <b> Nombre de pages : </b> @document.NbPages
+        <br />
+        <b>Description :</b>
+        <br />
+        @document.Description
+    </biv>
+}

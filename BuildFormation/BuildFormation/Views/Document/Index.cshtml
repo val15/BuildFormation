@@ -1,5 +1,5 @@
 ﻿
-@model  List<BuildFormation.Models.Document>
+@model BuildFormation.ViewModels.RechercheDocumentViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,18 +7,40 @@
 
 <h1>Liste des documents  </h1>
 
-@foreach (var document in Model)
+@using (Ajax.BeginForm("ResultatsRechercheDocuments", new AjaxOptions
 {
-    <biv>
-        <h2>@Html.ActionLink(@document.Titre, "AfficherDocument", new { id = document.Id })</h2>
-        <b> Auteur : </b> @document.Auteur.Nom
-        <b> Le : </b> @document.DateDePublication
-        <b> Theme : </b> @document.Theme
-        <b> Nombre de pages : </b> @document.NbPages
-        <br />
-        <b>Description :</b>
-        <br />
-        @document.Description
-    </biv>
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "resultats",
+    OnFailure = "ErreurRecherche",
+    LoadingElementId = "chargement"
+}))
+
+{
+    @Html.TextBoxFor(m => m.Filtre);
+    <img id="chargement" src="~/Content/Images/ajax-loader.gif" style="display: none" alt="Chargement en cours..." />
+    <input type="submit" value="Rechercher" />
+
+
+    <div id="resultats">
+        @{Html.RenderAction("ResultatsRechercheDocuments", new { rechercheViewModel = Model });
+        }
+    </div>
 }
+
+
+@*@foreach (var document in Model)
+    {
+        <biv>
+            <h2>@Html.ActionLink(@document.Titre, "AfficherDocument", new { id = document.Id })</h2>
+            <b> Auteur : </b> @document.Auteur.Nom
+            <b> Le : </b> @document.DateDePublication
+            <b> Theme : </b> @document.Theme
+            <b> Nombre de pages : </b> @document.NbPages
+            <br />
+            <b>Description :</b>
+            <br />
+            @document.Description
+        </biv>
+    }*@
 

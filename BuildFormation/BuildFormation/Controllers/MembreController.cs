@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BuildFormation.Models;
+using BuildFormation.ViewModels;
 
 namespace BuildFormation.Controllers
 {
@@ -40,10 +41,21 @@ namespace BuildFormation.Controllers
         {
             if (id.HasValue)
             {
+               /* var faculter = _dal.ObtenirFaculte(1);
+                var nomFac = faculter.Nom;*/
+
                 var membre = _dal.ObtenirMembre(id);
                 if (membre == null)
                     return View("Error");
-                return View(membre);
+                var specialite = membre.Specialite;
+                var option = specialite.Option;
+                var filere = option.Filere;
+                var faculte= filere.Faculte;
+                var ecole= faculte.Ecole;
+
+                AfficherMembreViewModel afficherMembreViewModel = new AfficherMembreViewModel{ Membre = membre,NomSpecialite=specialite.Nom,NomOption=option.Nom,NomFiliere=filere.Nom,NomFaculte=faculte.Nom,NomEcole=ecole.Nom};
+
+                return View(afficherMembreViewModel);
             }
             else
                 return HttpNotFound();
