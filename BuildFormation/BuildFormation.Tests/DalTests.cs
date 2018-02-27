@@ -493,7 +493,7 @@ namespace BuildFormation.Tests
 
         [TestMethod]
         public void
-            ModifocationEtSuppressionMembre_AvecDeuxMembres_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
+            ModifocationEtSuppressionMembre_AvecDeuxMembres_CreerUnTopicEtUnDocument_SupprimerLePremier_ModifierLeSecond_ObtientLeMembreSupplimerEgaleNullEtObtenirMembreModitie()
         {
             var ecole = _dal.CreerEcole("IFT", "LOT 2I39A Ampandrana", "0330257032", "ift@gmail.com");
 
@@ -510,8 +510,12 @@ namespace BuildFormation.Tests
             var membre2 = _dal.CreerMembre("HH", "Zrrt", "grer", "455", "GgGGGEER@ts.com", Privilege.Professeur, "trvg",
                 specialite);
 
-
+            //
+            _dal.CreerTopic("titre teste", "0123456789", membre1, "theme teste", DateTime.Now, "description01");
+            _dal.CreerDocument("titre teste", "doc1", "/de/de", membre1, "theme1", DateTime.Now, "description01", 10);
             _dal.SupprimerMembre(membre1.Id);
+
+
             _dal.ModifierMembre(membre2.Id, "Randre", "Zo", "Zo00", "II2300Tazo", "test@ts.com", Privilege.Administrateur,
                "hreyrey",
                 specialite);

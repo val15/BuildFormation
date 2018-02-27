@@ -223,11 +223,25 @@ namespace BuildFormation.Controllers
             }
         }
 
+        public ActionResult SupprimerDocument(int? id)
+        {
+            if (id.HasValue)
+            {
+                _dal.SupprimerDocument(id);
+                var membre = _dal.ObtenirMembre(HttpContext.User.Identity.Name);
+                return RedirectToAction("AfficherDocumentsDe", new { id = membre.Id });
 
-      
+            }
+            else
+                return HttpNotFound();
+
+        }
 
 
-            public int NbPageDuDocument(string cheminEtNomDuFichier)
+
+
+
+        public int NbPageDuDocument(string cheminEtNomDuFichier)
         {
             PdfDocument document = new PdfDocument();
 

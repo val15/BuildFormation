@@ -1,4 +1,6 @@
-﻿@model BuildFormation.ViewModels.AfficherDocumentViewModel
+﻿@using BuildFormation.Models
+@model BuildFormation.ViewModels.AfficherDocumentViewModel
+
 @{
     ViewBag.Title = "AfficherDocument";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -22,4 +24,10 @@
 @if (Model.Document.Auteur == Model.MembreActuel)//si le membre est l'auteur, il pourras modifier le topic
 {
     @Html.ActionLink("modifier", "ModifierDocument", new { id = Model.Document.Id })
+}
+<br />
+@if (Model.Document.Auteur == Model.MembreActuel || Model.MembreActuel.Privilege == Privilege.Administrateur)//si le membre est l'auteur, il pourras modifier le topic
+{
+    @Html.ActionLink("supprimer", "SupprimerDocument", new { id = Model.Document.Id }, null)
+
 }

@@ -74,6 +74,19 @@ namespace BuildFormation.Models
             context.SaveChanges();
             var membre2 = context.Membres.ToList().Last();
 
+            context.Membres.Add(new Membre
+            {
+                Nom = "admin",
+                Prenom = "admin",
+                Pseudo = "admin",
+                Adresse = "admin",
+                Email = "admin.com",
+                Privilege = Privilege.Administrateur,
+                MotDePasse = EncodeMd5("admin"),
+                Specialite = specialite
+
+            });
+            context.SaveChanges();
 
             context.Topics.Add(new Topic
             {

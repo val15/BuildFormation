@@ -1,11 +1,4 @@
-﻿
-@model BuildFormation.ViewModels.RechercheDocumentViewModel
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h1>Liste des documents  </h1>
+﻿@model BuildFormation.ViewModels.RechercheDocumentViewModel
 
 @using (Ajax.BeginForm("ResultatsRechercheDocuments", new AjaxOptions
 {
@@ -15,7 +8,6 @@
     OnFailure = "ErreurRecherche",
     LoadingElementId = "chargement"
 }))
-
 {
     @Html.TextBoxFor(m => m.Filtre);
     <img id="chargement" src="~/Content/Images/ajax-loader.gif" style="display: none" alt="Chargement en cours..." />
@@ -27,5 +19,3 @@
         }
     </div>
 }
-
-

@@ -1,5 +1,4 @@
 ﻿@model  BuildFormation.ViewModels.RechercheMembreViewModel
-<p>Vue partielle : @DateTime.Now.ToLongTimeString()</p>
 <p>Résultats de la recherche</p>
 @if (Model.ListeMembres.Count == 0)
 {
@@ -14,6 +13,8 @@ else
             <th>Pseudo</th>
             <th>Email</th>
             <th>Privilege</th>
+            <th>Nombre de topic</th>
+            <th>Nombre de document</th>
             <th>Modifier privilege</th>
             <th>Supprimer</th>
         </tr>
@@ -25,7 +26,10 @@ else
             <td>@membre.Pseudo</td>
             <td>@membre.Email</td>
             <td>@membre.Privilege</td>
+            <td> @Html.ActionLink(@membre.Topics.Count.ToString(), "AfficherTopicsDe", "Topic", new { id = @membre.Id }, null)</td>
+            <td>@Html.ActionLink(@membre.Documents.Count.ToString(), "AfficherDocumentsDe", "Document", new { id = @membre.Id }, null)</td>
             <td>@Html.ActionLink("Modifier privilege de " + membre.Pseudo, "ModifierPrivilege", new { id = membre.Id })</td>
+            <td>@Html.ActionLink("Supprimer " + membre.Pseudo, "SupprimerMembre", new { id = membre.Id })</td>
         </tr>
         }
     </table>

@@ -258,9 +258,16 @@
     <Content Include="Views\Topic\ResultatsRechercheTopics.cshtml" />
     <Content Include="Views\Document\ResultatsRechercheDocuments.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\RechercherMembre.cshtml" />
     <Content Include="Views\Admin\ResultatsRechercheMembres.cshtml" />
     <Content Include="Views\Admin\ModifierPrivilege.cshtml" />
+    <Content Include="Views\Admin\SupprimerMembre.cshtml" />
+    <Content Include="Views\Admin\RechercheMembre.cshtml" />
+    <Content Include="Views\Admin\RechercheTopic.cshtml" />
+    <Content Include="Views\Admin\ResultatsRechercheTopics.cshtml" />
+    <Content Include="Views\Admin\SupprimerTopic.cshtml" />
+    <Content Include="Views\Admin\RechercheDocument.cshtml" />
+    <Content Include="Views\Admin\ResultatsRechercheDocuments.cshtml" />
+    <Content Include="Views\Admin\SupprimerDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

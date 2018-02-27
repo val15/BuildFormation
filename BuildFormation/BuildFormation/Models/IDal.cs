@@ -104,7 +104,7 @@ namespace BuildFormation.Models
 
         List<Topic> RechercheTopics(string filtre);
 
-        bool SupprimerTopic(int id);
+        bool SupprimerTopic(int? id);
         #endregion
 
 
@@ -116,7 +116,7 @@ namespace BuildFormation.Models
         List<Document> ObtenirListeDocuments();
         List<Document> RechercheDocuments(string filtre);
 
-        bool SupprimerDocument(int id);
+        bool SupprimerDocument(int? id);
 
 
 

@@ -1,0 +1,45 @@
+﻿@model  BuildFormation.ViewModels.RechercheTopicViewModel
+<p>Résultats de la recherche</p>
+@if (Model.ListeDesTopics.Count == 0)
+{
+    <p>Pas de résultat</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Tire</th>
+            <th>Theme</th>
+            <th>Date de publication</th>
+            <th>Date dérnier modification</th>
+            <th>Auteur</th>
+            <th>Supprimer</th>
+        </tr>
+        @foreach (var topic in Model.ListeDesTopics)
+        {
+        <tr>
+            <td>
+                @Html.ActionLink(@topic.Titre, "AfficherTopic", "Topic", new { id = topic.Id.ToString() }, null)
+            </td>
+            <td>@topic.Theme</td>
+            <td>@topic.DateDePublication.ToString()</td>
+            <td>@topic.DateDernierModification.ToString()</td>
+            <td>@topic.Auteur.Pseudo</td>
+            <td>@Html.ActionLink("Supprimer", "SupprimerTopic", new { id = topic.Id })</td>
+
+        </tr>
+        }
+    </table>
+}
+
+
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid black;
+    }
+</style>
+

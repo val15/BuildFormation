@@ -563,8 +563,23 @@ namespace BuildFormation.Models
                 return false;
             else
             {
-                  try
+               try
                 {
+                    var listeTopicsDuMembre = membre.Topics.ToList();
+                    {
+                        foreach(Topic topic in listeTopicsDuMembre)
+                        {
+                            SupprimerTopic(topic.Id);
+                        }
+                    }
+
+                    var listeDucumentDuMembre = membre.Documents.ToList();
+                    {
+                        foreach (Document document in listeDucumentDuMembre)
+                        {
+                            SupprimerDocument(document.Id);
+                        }
+                    }
                     _bdd.Membres.Remove(membre);
                     _bdd.SaveChanges();
                     return true;
@@ -703,7 +718,7 @@ namespace BuildFormation.Models
             }
         }
 
-        public bool SupprimerTopic(int id)
+        public bool SupprimerTopic(int? id)
         {
             var topic = _bdd.Topics.FirstOrDefault(t => t.Id == id);
             if (topic == null)
@@ -823,7 +838,7 @@ namespace BuildFormation.Models
         }
 
 
-        public bool SupprimerDocument(int id)
+        public bool SupprimerDocument(int? id)
         {
             var document = ObtenirDocument(id);
             if (document == null)

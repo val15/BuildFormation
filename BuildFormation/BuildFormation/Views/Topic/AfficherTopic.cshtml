@@ -1,4 +1,5 @@
-﻿@model BuildFormation.ViewModels.AfficherTopicViewModel
+﻿@using BuildFormation.Models
+@model BuildFormation.ViewModels.AfficherTopicViewModel
 @{
     /**/
 
@@ -42,6 +43,12 @@
 @if (Model.Topic.Auteur == Model.MembreActuel)//si le membre est l'auteur, il pourras modifier le topic
 {
     @Html.ActionLink("modifier", "ModifierTopic", new { id = Model.Topic.Id })
+}
+<br />
+@if (Model.Topic.Auteur == Model.MembreActuel || Model.MembreActuel.Privilege == Privilege.Administrateur)//si le membre est l'auteur, il pourras modifier le topic
+{
+    @Html.ActionLink("supprimer", "SupprimerTopic", new { id = Model.Topic.Id },null)
+   
 }
 
 

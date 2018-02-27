@@ -144,6 +144,21 @@ namespace BuildFormation.Controllers
         }
 
 
+        public ActionResult SupprimerTopic(int? id)
+        {
+            if (id.HasValue)
+            {
+                _dal.SupprimerTopic(id);
+                var membre = _dal.ObtenirMembre(HttpContext.User.Identity.Name);
+                return RedirectToAction("AfficherTopicsDe", new { id = membre.Id });
+
+            }
+            else
+                    return HttpNotFound();
+     
+        }
+
+
 
 
 

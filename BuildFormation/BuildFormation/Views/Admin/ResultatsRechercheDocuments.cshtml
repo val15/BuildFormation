@@ -1,0 +1,50 @@
+﻿@model  BuildFormation.ViewModels.RechercheDocumentViewModel
+<p>Résultats de la recherche</p>
+@if (Model.ListeDesDocuments.Count == 0)
+{
+    <p>Pas de résultat</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Tire</th>
+            <th>Theme</th>
+            <th>Nom</th>
+            <th>Chemin</th>
+            <th>Date de publication</th>
+            <th>Auteur</th>
+            <th>Nb pages</th>
+            <th>Supprimer</th>
+        </tr>
+        @foreach (var document in Model.ListeDesDocuments)
+        {
+        <tr>
+            <td>
+                @Html.ActionLink(@document.Titre, "AfficherDocument", "Document", new { id = document.Id.ToString() }, null)
+            </td>
+            <td>@document.Theme</td>
+            <td>@document.Nom</td>
+            <td>@document.Chemin)</td>
+            <td>@document.DateDePublication.ToString()</td>
+            <td>@document.Auteur.Pseudo</td>
+            <td>@document.NbPages</td>
+            <td>@Html.ActionLink("Supprimer", "SupprimerDocument", new { id = document.Id })</td>
+
+        </tr>
+        }
+    </table>
+}
+
+
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid black;
+    }
+</style>
+
+
