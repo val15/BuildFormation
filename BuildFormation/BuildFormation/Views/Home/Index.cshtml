@@ -4,24 +4,36 @@
     ViewBag.Title = "Home Page";
 }
 <div>
-    <b>@Html.ActionLink(@Model.NbMembre.ToString()+ " membres", "Index", "Membre")</b> 
+    Bienvenu @Model.MomUtilisateur
+    @if (@Model.MomUtilisateur == "Visiteur")
+    {
+        @Html.ActionLink("Connexion", "Index", "Login")
+    }
+
+
 </div>
+<br />
+
+<div>
+    <b>@Html.ActionLink(@Model.NbMembre.ToString() + " membres", "Index", "Membre")</b>
+</div>
+
 @*<a href="~/Documents/DocTest.pdf">teste lien</a>*@
-<div class="AcceilGauche" >
+<div class="AcceilGauche">
     <h1>Liste des derniers @Model.Limit topics  </h1>
     @foreach (var topic in Model.ListeDerniersTopics)
     {
-    <biv>
-        <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", "Topic", new { id = topic.Id }, null)</h2>
-        <b> Auteur : </b> @topic.Auteur.Nom
-        <b> Le : </b> @topic.DateDePublication
-        <b> theme : </b> @topic.Theme
-        <br />
-        <b>Description :</b>
-        <br />
-        @topic.Description
+        <biv>
+            <h2>@Html.ActionLink(@topic.Titre, "AfficherTopic", "Topic", new { id = topic.Id }, null)</h2>
+            <b> Auteur : </b> @topic.Auteur.Nom
+            <b> Le : </b> @topic.DateDePublication
+            <b> theme : </b> @topic.Theme
+            <br />
+            <b>Description :</b>
+            <br />
+            @topic.Description
 
-    </biv>
+        </biv>
     }
 </div>
 
@@ -30,17 +42,17 @@
     <h1>Liste des @Model.Limit dérniers documents </h1>
     @foreach (var document in Model.ListeDerniersDocuments)
     {
-    <biv>
-        <h2>@Html.ActionLink(@document.Titre, "AfficherDocument", "Document", new { id = document.Id }, null)</h2>
-        <b> Auteur : </b> @document.Auteur.Nom
-        <b> Le : </b> @document.DateDePublication
-        <b> Theme : </b> @document.Theme
-        <b> Nombre de pages : </b> @document.NbPages
-        <br />
-        <b>Description :</b>
-        <br />
-        @document.Description
-    </biv>
+        <biv>
+            <h2>@Html.ActionLink(@document.Titre, "AfficherDocument", "Document", new { id = document.Id }, null)</h2>
+            <b> Auteur : </b> @document.Auteur.Nom
+            <b> Le : </b> @document.DateDePublication
+            <b> Theme : </b> @document.Theme
+            <b> Nombre de pages : </b> @document.NbPages
+            <br />
+            <b>Description :</b>
+            <br />
+            @document.Description
+        </biv>
     }
 </div>
 

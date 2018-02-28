@@ -9,44 +9,51 @@
     <ul class="nav navbar-nav">
         <li>
             @Ajax.ActionLink("Gerer les membres", "RechercheMembre", new AjaxOptions
-        {
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "vuepartiel",
-            HttpMethod = "GET",
-            OnFailure = "ErreurAjax"
-        })
+       {
+           InsertionMode = InsertionMode.Replace,
+           UpdateTargetId = "vuepartiel",
+           HttpMethod = "GET",
+           OnFailure = "ErreurAjax",
+           LoadingElementId = "chargementPrincipale"
+       })
         </li>
         <li>
             @Ajax.ActionLink("Gerer les topics", "RechercheTopic", new AjaxOptions
-        {
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "vuepartiel",
-            HttpMethod = "GET",
-            OnFailure = "ErreurAjax"
-        })
+       {
+           InsertionMode = InsertionMode.Replace,
+           UpdateTargetId = "vuepartiel",
+           HttpMethod = "GET",
+           OnFailure = "ErreurAjax",
+           LoadingElementId = "chargementPrincipale"
+       })
         </li>
 
         <li>
             @Ajax.ActionLink("Gerer les documents", "RechercheDocument", new AjaxOptions
-        {
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "vuepartiel",
-            HttpMethod = "GET",
-            OnFailure = "ErreurAjax"
-        })
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "vuepartiel",
+                HttpMethod = "GET",
+                OnFailure = "ErreurAjax",
+                LoadingElementId = "chargementPrincipale"
+            })
         </li>
 
     </ul>
+    <img id="chargementPrincipale" src="~/Content/Images/ajax-loader.gif" style="display: none" alt="Chargement en cours..." />
+
 </div>
+
 <div id="vuepartiel">
 
-    @{
+    @*@{
 
-        Html.RenderAction("RechercheDocument");
+            Html.RenderAction("RechercheDocument");
 
-    }
+        }*@
 
 </div>
+
 
 
 

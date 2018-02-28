@@ -23,20 +23,28 @@ namespace BuildFormation.Controllers
 
         public ActionResult Index()
         {
-           
-         
+
+
 
             var homeViewModel = new HomeViewModel
             {
-               
+
                 ListeDerniersTopics = _dal.ObtenirListeDerniersTopics(5),
                 ListeDerniersDocuments = _dal.ObtenirListeDerniersDocuments(5),
                 Limit = 5,
                 NbMembre = _dal.ObtenirNombreMembre()
-            };
+         };
+            var membre = _dal.ObtenirMembre(HttpContext.User.Identity.Name);
+            if (membre != null)
+            {
+                homeViewModel.MomUtilisateur = membre.Pseudo;
+            }
+            else
+                homeViewModel.MomUtilisateur = "Visiteur";
+     
 
 
-            return View(homeViewModel);
+                return View(homeViewModel);
           
         }
 

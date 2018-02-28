@@ -79,7 +79,7 @@ namespace BuildFormation.Controllers
         public ActionResult CreerTopic()
         {
             var membre = _dal.ObtenirMembre(HttpContext.User.Identity.Name);
-            var topic=new Topic{Auteur = membre,Commentaires = new List<Commentaire>(),Contenu = "\\[  \\]",DateDePublication = DateTime.Now,DateDernierModification = null};
+            var topic=new Topic{Auteur = membre,Commentaires = new List<Commentaire>(),DateDePublication = DateTime.Now,DateDernierModification = null};
             return View(topic);
         }
 
@@ -99,8 +99,10 @@ namespace BuildFormation.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] //pour désacctiver la securiter et permetre l'utilisatui de l'éditeur de texte 
         public ActionResult Appercu(Topic topic)//pour l'appercu
         {
+            //topic.Contenu= Server.HtmlEncode("<b>unsafe</b>"); ;
             return View("CreerTopic",topic);
         }
 
