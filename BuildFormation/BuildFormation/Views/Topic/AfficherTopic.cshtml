@@ -38,7 +38,7 @@
 <br />
 <b> Contenu : </b>
 <br />
-@Model.Topic.Contenu
+ @Html.Raw(Model.Topic.Contenu)
 <br />
 @if (Model.Topic.Auteur == Model.MembreActuel)//si le membre est l'auteur, il pourras modifier le topic
 {

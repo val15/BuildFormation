@@ -84,6 +84,7 @@ namespace BuildFormation.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreerTopic(Topic topic)//pour ajouter
         {
             if (topic.Titre=="" || topic.Theme=="" || topic.Description=="")
@@ -122,6 +123,7 @@ namespace BuildFormation.Controllers
 
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult ModifierTopic(Topic topic)//pour modifier
         {
             if (topic.Titre == "" || topic.Theme == "" || topic.Description == "")
@@ -139,6 +141,7 @@ namespace BuildFormation.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] //pour désacctiver la securiter et permetre l'utilisatui de l'éditeur de texte 
         public ActionResult AppercuModifier(Topic topic)//pour l'appercu
         {
           //  var topicModif = _dal.ObtenirTopic(topic.Id);
@@ -159,6 +162,8 @@ namespace BuildFormation.Controllers
                     return HttpNotFound();
      
         }
+
+      
 
 
 

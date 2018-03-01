@@ -7,62 +7,36 @@
 <h2>Modief le topic @Model.Titre</h2>
 
 
-<script>
-    function commande(nom, argument) {
-        if (typeof argument === 'undefined') {
-            argument = '';
-        }
-        // Exécuter la commande
-        document.execCommand(nom, false, argument);
-    }
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX", "output/HTML-CSS"],
-    tex2jax: {
-    inlineMath: [ ["\\(","\\)"] ],
-    displayMath: [ ["\\[","\\]"] ],
-    processEscapes: true
-    },
-    "HTML-CSS": { availableFonts: ["TeX"] }
-    });
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
-
-
 <div>
     <div>
         @using (Html.BeginForm("AppercuModifier", "Topic"))
         {
-        <fieldset>
-            <legend>Modifier un topic (pour les formule latex: utilise le syntaxe En dehors d'un texte ("maths hors ligne"))</legend>
+            <fieldset>
+                <legend>Modifier un topic (pour les formule latex: utilise le syntaxe En dehors d'un texte ("maths hors ligne"))</legend>
 
 
-            <div>
-                @Html.LabelFor(model => model.Contenu)
-                <br />
-                @Html.TextAreaFor(model => model.Contenu,new { Style = "width: 100%; height:150px;" })
-                @Html.ValidationMessageFor(model => model.Contenu) 
-            </div>
-            <br />
-            <div>
-                @Html.TextBoxFor(model => model.Id, new { Style = "width: 0px; height:0px;" })
-                @Html.TextBoxFor(model => model.Titre, new { Style = "width: 0px; height:0px;" })
-                @Html.TextBoxFor(model => model.Theme, new { Style = "width: 0px; height:0px;" })
-                @Html.TextBoxFor(model => model.Description, new { Style = "width: 0px; height:0px;" })
-
-            </div>
-            <br />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Apperçu" class="btn btn-default" />
+                <div>
+                    @Html.LabelFor(model => model.Contenu)
+                    <br />
+                    @Html.TextAreaFor(model => model.Contenu, new { @style = "width: 100%; height:150px;", @class = "form-control input-lg textarea-editor" })
+                    @Html.ValidationMessageFor(model => model.Contenu)
                 </div>
-            </div>
+                <br />
+                <div>
+                    @Html.TextBoxFor(model => model.Id, new { Style = "width: 0px; height:0px;" })
+                    @Html.TextBoxFor(model => model.Titre, new { Style = "width: 0px; height:0px;" })
+                    @Html.TextBoxFor(model => model.Theme, new { Style = "width: 0px; height:0px;" })
+                    @Html.TextBoxFor(model => model.Description, new { Style = "width: 0px; height:0px;" })
 
-        </fieldset>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Apperçu" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </fieldset>
         }
     </div>
 
@@ -70,19 +44,9 @@
     <div>
         @if (Model.Contenu != null)
         {
-            <div id="editeur" contentEditable="false">@Model.Contenu</div>
+        <div id="editeur" contentEditable="false">@Html.Raw(Model.Contenu)</div>
         }
     </div>
-
-   
-
-
-
-
-
-
-    @*Of a set \(\mathcal{S}\) is a bijection \(\psi : \mathcal{S} \rightarrow \mathcal{S}\).
-        \[ \int_{a}^{b} f(x) \, \mathrm{d}x \]*@
 </div>
 
 
@@ -94,44 +58,71 @@
             <div>
                 <br />
                 @Html.TextAreaFor(model => model.Contenu, new { Style = "width: 0px; height:0px;" })
-                @Html.ValidationMessageFor(model => model.Contenu) 
+                @Html.ValidationMessageFor(model => model.Contenu)
             </div>
             <div>
                 @Html.TextBoxFor(model => model.Id, new { Style = "width: 0px; height:0px;" })
             </div>
-             <div class="form-horizontal">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Sauver" class="btn btn-default" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Sauver" class="btn btn-default" />
+                    </div>
                 </div>
+
             </div>
-            
-        </div>
 
         </fieldset>
     }
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+
+    @*Editeur*@
+    <script src="~/Scripts/summernote-ext-rtl.js" type="text/javascript"></script>
+    <script src="~/Scripts/script-custom-editor.js" type="text/javascript"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+
+    @*Latex*@
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [ ["\\(","\\)"] ],
+        displayMath: [ ["\\[","\\]"] ],
+        processEscapes: true
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+}
 

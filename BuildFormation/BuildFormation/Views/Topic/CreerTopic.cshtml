@@ -4,31 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script>
-        function commande(nom, argument) {
-            if (typeof argument === 'undefined') {
-                argument = '';
-            }
-            // Exécuter la commande
-            document.execCommand(nom, false, argument);
-        }
-    </script>
-
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-        extensions: ["tex2jax.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        tex2jax: {
-        inlineMath: [ ["\\(","\\)"] ],
-        displayMath: [ ["\\[","\\]"] ],
-        processEscapes: true
-        },
-        "HTML-CSS": { availableFonts: ["TeX"] }
-        });
-    </script>
-    <script type="text/javascript"
-            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
-
 
 
 <h2>CreerTopic</h2>
@@ -38,14 +13,10 @@
         {
             <fieldset>
                 <legend>Creer un topic (pour les formule latex: utilise le syntaxe En dehors d'un texte ("maths hors ligne"))</legend>
-
-               
-
                 <div>
                     @Html.LabelFor(model => model.Contenu)
                     <br />
-                    @Html.TextAreaFor(model => model.Contenu,
-                                                new { @style = "width: 100%; height:150px;"/*, @class = "form-control input-lg textarea-editor"*/ })
+                    @Html.TextAreaFor(model => model.Contenu,new { @style = "width: 100%; height:150px;", @class = "form-control input-lg textarea-editor" })
                     @Html.ValidationMessageFor(model => model.Contenu)
                 </div>
 
@@ -67,7 +38,7 @@
     <div>
         @if (Model.Contenu != null)
         {
-        <div id="editeur" contentEditable="false"> @Html.Raw(Model.Contenu) </div>
+            <div id="editeur" contentEditable="false"> @Html.Raw(Model.Contenu) </div>
         }
     </div>
 
@@ -125,11 +96,27 @@
 {
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
 
+    @*Editeur*@
     <script src="~/Scripts/summernote-ext-rtl.js" type="text/javascript"></script>
     <script src="~/Scripts/script-custom-editor.js" type="text/javascript"></script>
-
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 
+    @*Latex*@
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [ ["\\(","\\)"] ],
+        displayMath: [ ["\\[","\\]"] ],
+        processEscapes: true
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 }
 
 
